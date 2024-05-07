@@ -4,7 +4,7 @@ Dine Rewards
 Overview
 --------
 
-Dine Rewards is a unified restaurant loyalty card tracker application designed to simplify and enhance the dining experience by consolidating various loyalty programs into a single, easy-to-use interface. Created as a final assignment for the iOS Development course, this app aims to provide users with a seamless way to track their rewards across different restaurants, ensuring they never miss out on potential benefits.
+Dine Rewards is a unified restaurant loyalty card tracker application designed to simplify and enhance the dining experience by consolidating various loyalty programs into a single, easy-to-use interface. Created as a final assignment for the iOS Development course in Autumn 2024 at UTS, this app aims to provide users with a seamless way to track their rewards across different restaurants, ensuring they never miss out on potential benefits.
 
 Features
 --------
@@ -56,9 +56,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 Contact
 -------
 
-For any queries or feedback, please reach out to <ramachandran.k.rahul@gmail.com> <riyanpahuja4@gmail.com> or <michael email here>.
+For any queries or feedback, please reach out to <ramachandran.k.rahul@gmail.com>, <riyanpahuja4@gmail.com> or <batoan.nguyen-1@student.uts.edu.au>.
 
 Acknowledgements
 ----------------
 
-This project is submitted as a final assignment for the iOS Development subject. Special thanks to Verren Lo, Firas Al-Doghman and peers for their guidance and support throughout the development process.
+This project is submitted as a final assignment for the iOS Development subject. Special thanks to Verren Lo and Firas Al-Doghman, the teaching staff, and our peers for their guidance and support throughout the development process.
