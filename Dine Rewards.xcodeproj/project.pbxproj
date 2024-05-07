@@ -1,0 +1,587 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		365A67462BEA0E8700ECED78 /* Dine_RewardsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365A67452BEA0E8700ECED78 /* Dine_RewardsApp.swift */; };
+		365A67482BEA0E8700ECED78 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365A67472BEA0E8700ECED78 /* ContentView.swift */; };
+		365A674A2BEA0E8800ECED78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 365A67492BEA0E8800ECED78 /* Assets.xcassets */; };
+		365A674D2BEA0E8800ECED78 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 365A674C2BEA0E8800ECED78 /* Preview Assets.xcassets */; };
+		365A67572BEA0E8800ECED78 /* Dine_RewardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365A67562BEA0E8800ECED78 /* Dine_RewardsTests.swift */; };
+		365A67612BEA0E8800ECED78 /* Dine_RewardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365A67602BEA0E8800ECED78 /* Dine_RewardsUITests.swift */; };
+		365A67632BEA0E8800ECED78 /* Dine_RewardsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365A67622BEA0E8800ECED78 /* Dine_RewardsUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		365A67532BEA0E8800ECED78 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 365A673A2BEA0E8700ECED78 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 365A67412BEA0E8700ECED78;
+			remoteInfo = "Dine Rewards";
+		};
+		365A675D2BEA0E8800ECED78 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 365A673A2BEA0E8700ECED78 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 365A67412BEA0E8700ECED78;
+			remoteInfo = "Dine Rewards";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		365A67422BEA0E8700ECED78 /* Dine Rewards.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Dine Rewards.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		365A67452BEA0E8700ECED78 /* Dine_RewardsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dine_RewardsApp.swift; sourceTree = "<group>"; };
+		365A67472BEA0E8700ECED78 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		365A67492BEA0E8800ECED78 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		365A674C2BEA0E8800ECED78 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		365A67522BEA0E8800ECED78 /* Dine RewardsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dine RewardsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		365A67562BEA0E8800ECED78 /* Dine_RewardsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dine_RewardsTests.swift; sourceTree = "<group>"; };
+		365A675C2BEA0E8800ECED78 /* Dine RewardsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dine RewardsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		365A67602BEA0E8800ECED78 /* Dine_RewardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dine_RewardsUITests.swift; sourceTree = "<group>"; };
+		365A67622BEA0E8800ECED78 /* Dine_RewardsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dine_RewardsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		365A673F2BEA0E8700ECED78 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		365A674F2BEA0E8800ECED78 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		365A67592BEA0E8800ECED78 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		365A67392BEA0E8700ECED78 = {
+			isa = PBXGroup;
+			children = (
+				365A67442BEA0E8700ECED78 /* Dine Rewards */,
+				365A67552BEA0E8800ECED78 /* Dine RewardsTests */,
+				365A675F2BEA0E8800ECED78 /* Dine RewardsUITests */,
+				365A67432BEA0E8700ECED78 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		365A67432BEA0E8700ECED78 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				365A67422BEA0E8700ECED78 /* Dine Rewards.app */,
+				365A67522BEA0E8800ECED78 /* Dine RewardsTests.xctest */,
+				365A675C2BEA0E8800ECED78 /* Dine RewardsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		365A67442BEA0E8700ECED78 /* Dine Rewards */ = {
+			isa = PBXGroup;
+			children = (
+				365A67452BEA0E8700ECED78 /* Dine_RewardsApp.swift */,
+				365A67472BEA0E8700ECED78 /* ContentView.swift */,
+				365A67492BEA0E8800ECED78 /* Assets.xcassets */,
+				365A674B2BEA0E8800ECED78 /* Preview Content */,
+			);
+			path = "Dine Rewards";
+			sourceTree = "<group>";
+		};
+		365A674B2BEA0E8800ECED78 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				365A674C2BEA0E8800ECED78 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		365A67552BEA0E8800ECED78 /* Dine RewardsTests */ = {
+			isa = PBXGroup;
+			children = (
+				365A67562BEA0E8800ECED78 /* Dine_RewardsTests.swift */,
+			);
+			path = "Dine RewardsTests";
+			sourceTree = "<group>";
+		};
+		365A675F2BEA0E8800ECED78 /* Dine RewardsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				365A67602BEA0E8800ECED78 /* Dine_RewardsUITests.swift */,
+				365A67622BEA0E8800ECED78 /* Dine_RewardsUITestsLaunchTests.swift */,
+			);
+			path = "Dine RewardsUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		365A67412BEA0E8700ECED78 /* Dine Rewards */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 365A67662BEA0E8800ECED78 /* Build configuration list for PBXNativeTarget "Dine Rewards" */;
+			buildPhases = (
+				365A673E2BEA0E8700ECED78 /* Sources */,
+				365A673F2BEA0E8700ECED78 /* Frameworks */,
+				365A67402BEA0E8700ECED78 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Dine Rewards";
+			productName = "Dine Rewards";
+			productReference = 365A67422BEA0E8700ECED78 /* Dine Rewards.app */;
+			productType = "com.apple.product-type.application";
+		};
+		365A67512BEA0E8800ECED78 /* Dine RewardsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 365A67692BEA0E8800ECED78 /* Build configuration list for PBXNativeTarget "Dine RewardsTests" */;
+			buildPhases = (
+				365A674E2BEA0E8800ECED78 /* Sources */,
+				365A674F2BEA0E8800ECED78 /* Frameworks */,
+				365A67502BEA0E8800ECED78 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				365A67542BEA0E8800ECED78 /* PBXTargetDependency */,
+			);
+			name = "Dine RewardsTests";
+			productName = "Dine RewardsTests";
+			productReference = 365A67522BEA0E8800ECED78 /* Dine RewardsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		365A675B2BEA0E8800ECED78 /* Dine RewardsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 365A676C2BEA0E8800ECED78 /* Build configuration list for PBXNativeTarget "Dine RewardsUITests" */;
+			buildPhases = (
+				365A67582BEA0E8800ECED78 /* Sources */,
+				365A67592BEA0E8800ECED78 /* Frameworks */,
+				365A675A2BEA0E8800ECED78 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				365A675E2BEA0E8800ECED78 /* PBXTargetDependency */,
+			);
+			name = "Dine RewardsUITests";
+			productName = "Dine RewardsUITests";
+			productReference = 365A675C2BEA0E8800ECED78 /* Dine RewardsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		365A673A2BEA0E8700ECED78 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					365A67412BEA0E8700ECED78 = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					365A67512BEA0E8800ECED78 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 365A67412BEA0E8700ECED78;
+					};
+					365A675B2BEA0E8800ECED78 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 365A67412BEA0E8700ECED78;
+					};
+				};
+			};
+			buildConfigurationList = 365A673D2BEA0E8700ECED78 /* Build configuration list for PBXProject "Dine Rewards" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 365A67392BEA0E8700ECED78;
+			productRefGroup = 365A67432BEA0E8700ECED78 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				365A67412BEA0E8700ECED78 /* Dine Rewards */,
+				365A67512BEA0E8800ECED78 /* Dine RewardsTests */,
+				365A675B2BEA0E8800ECED78 /* Dine RewardsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		365A67402BEA0E8700ECED78 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				365A674D2BEA0E8800ECED78 /* Preview Assets.xcassets in Resources */,
+				365A674A2BEA0E8800ECED78 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		365A67502BEA0E8800ECED78 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		365A675A2BEA0E8800ECED78 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		365A673E2BEA0E8700ECED78 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				365A67482BEA0E8700ECED78 /* ContentView.swift in Sources */,
+				365A67462BEA0E8700ECED78 /* Dine_RewardsApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		365A674E2BEA0E8800ECED78 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				365A67572BEA0E8800ECED78 /* Dine_RewardsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		365A67582BEA0E8800ECED78 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				365A67612BEA0E8800ECED78 /* Dine_RewardsUITests.swift in Sources */,
+				365A67632BEA0E8800ECED78 /* Dine_RewardsUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		365A67542BEA0E8800ECED78 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 365A67412BEA0E8700ECED78 /* Dine Rewards */;
+			targetProxy = 365A67532BEA0E8800ECED78 /* PBXContainerItemProxy */;
+		};
+		365A675E2BEA0E8800ECED78 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 365A67412BEA0E8700ECED78 /* Dine Rewards */;
+			targetProxy = 365A675D2BEA0E8800ECED78 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		365A67642BEA0E8800ECED78 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		365A67652BEA0E8800ECED78 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		365A67672BEA0E8800ECED78 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Dine Rewards/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "au.edu.uts.Dine-Rewards";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		365A67682BEA0E8800ECED78 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Dine Rewards/Preview Content\"";
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "au.edu.uts.Dine-Rewards";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		365A676A2BEA0E8800ECED78 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "au.edu.uts.Dine-RewardsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dine Rewards.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Dine Rewards";
+			};
+			name = Debug;
+		};
+		365A676B2BEA0E8800ECED78 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "au.edu.uts.Dine-RewardsTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Dine Rewards.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Dine Rewards";
+			};
+			name = Release;
+		};
+		365A676D2BEA0E8800ECED78 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "au.edu.uts.Dine-RewardsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Dine Rewards";
+			};
+			name = Debug;
+		};
+		365A676E2BEA0E8800ECED78 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "au.edu.uts.Dine-RewardsUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Dine Rewards";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		365A673D2BEA0E8700ECED78 /* Build configuration list for PBXProject "Dine Rewards" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				365A67642BEA0E8800ECED78 /* Debug */,
+				365A67652BEA0E8800ECED78 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		365A67662BEA0E8800ECED78 /* Build configuration list for PBXNativeTarget "Dine Rewards" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				365A67672BEA0E8800ECED78 /* Debug */,
+				365A67682BEA0E8800ECED78 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		365A67692BEA0E8800ECED78 /* Build configuration list for PBXNativeTarget "Dine RewardsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				365A676A2BEA0E8800ECED78 /* Debug */,
+				365A676B2BEA0E8800ECED78 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		365A676C2BEA0E8800ECED78 /* Build configuration list for PBXNativeTarget "Dine RewardsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				365A676D2BEA0E8800ECED78 /* Debug */,
+				365A676E2BEA0E8800ECED78 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 365A673A2BEA0E8700ECED78 /* Project object */;
+}
