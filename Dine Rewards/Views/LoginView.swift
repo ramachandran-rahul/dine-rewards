@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     @State private var phoneNumber: String = ""
-    @State private var otp: [String] = Array(repeating: "", count: 4)
+    @State private var otp: [String] = Array(repeating: "", count: 6)
     @State private var shouldNavigate: Bool = false
     
     var body: some View {
@@ -50,27 +50,54 @@ struct LoginView: View {
                 .padding(.top, 10)
             
             // Phone number entry
-            TextField("Phone Number", text: $phoneNumber)
-                .keyboardType(.numberPad)
-                .foregroundColor(.black)
-                .padding(.leading, 40)
-                .padding(.vertical, 10)
-                .background(Color.white)
-                .cornerRadius(5)
-                .overlay(
-                    HStack {
-                        Image(systemName: "phone.fill")
-                            .foregroundColor(.red)
-                            .padding(.leading, 10)
-                        Spacer()
-                    }
-                )
-                .padding(.horizontal)
+            HStack {
+                TextField("Phone Number", text: $phoneNumber)
+                    .keyboardType(.numberPad)
+                    .foregroundColor(.black)
+                    .padding(.leading, 40)
+                    .padding(.vertical, 10)
+                    .background(Color.white)
+                    .cornerRadius(5)
+                    .overlay(
+                        HStack {
+                            Image(systemName: "phone.fill")
+                                .foregroundColor(.red)
+                                .padding(.leading, 10)
+                            Spacer()
+                        }
+                    )
+                    .padding(.horizontal)
                 .padding(.top, 10)
+                
+                Button(action: {
+                    // Action for the button
+                    Auth.shared.startAuth(phoneNumber: phoneNumber) { success in
+                        guard success else {return}
+                        DispatchQueue.main.async {
+                            shouldNavigate.toggle()
+                            //debug
+                            print("Api call successful")
+                            
+                            // TODO: Separate the phone number and OTP screen.
+                            // TODO: Add phone number validation
+                            // TODO: Add OTP auto shift to next box and auto clear if unsuccessfull
+                        }
+                    }
+                }) {
+                    Text(">")
+                        .foregroundColor(.white)
+                        .frame(maxWidth: 20)
+                        .padding()
+                        .background(Color.red)
+                        .cornerRadius(10)
+                }
+                .padding(.horizontal)
+                .padding(.top, 20)
+            }
             
             // OTP entry
             HStack(spacing: 10) {
-                ForEach(0..<4, id: \.self) { index in
+                ForEach(0..<6, id: \.self) { index in
                     TextField("", text: $otp[index])
                     .frame(width: 45, height: 45)
                     .textFieldStyle(PlainTextFieldStyle())
@@ -90,12 +117,14 @@ struct LoginView: View {
             // Continue button
             Button(action: {
                 // Action for the button
-                Auth.shared.startAuth(phoneNumber: phoneNumber) { success in
+                Auth.shared.verifyCode(smsCode: otp.joined()){ success in
                     guard success else {return}
                     DispatchQueue.main.async {
                         shouldNavigate.toggle()
                         //debug
-                        print("Api call successful")
+                        print("succesfully verified OTP")
+                        
+                        // TODO: handle what happens once otp verification is successful
                     }
                 }
             }) {
