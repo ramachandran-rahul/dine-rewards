@@ -10,6 +10,7 @@ import SwiftUI
 struct LoginView: View {
     @State private var phoneNumber: String = ""
     @State private var otp: [String] = Array(repeating: "", count: 4)
+    @State private var shouldNavigate: Bool = false
     
     var body: some View {
         VStack {
@@ -89,6 +90,14 @@ struct LoginView: View {
             // Continue button
             Button(action: {
                 // Action for the button
+                Auth.shared.startAuth(phoneNumber: phoneNumber) { success in
+                    guard success else {return}
+                    DispatchQueue.main.async {
+                        shouldNavigate.toggle()
+                        //debug
+                        print("Api call successful")
+                    }
+                }
             }) {
                 Text("Continue")
                     .foregroundColor(.white)

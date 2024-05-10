@@ -19,6 +19,7 @@
 		B37AB4DA2BEE4B8E005CE6BC /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B37AB4D92BEE4B8E005CE6BC /* FirebaseAuth */; };
 		B37AB4DC2BEE4B8E005CE6BC /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = B37AB4DB2BEE4B8E005CE6BC /* FirebaseAuthCombine-Community */; };
 		B37AB4DE2BEE4B8E005CE6BC /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = B37AB4DD2BEE4B8E005CE6BC /* FirebaseDatabase */; };
+		B3EAC5C52BEE551800D493D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B3EAC5C42BEE551800D493D1 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,8 @@
 		36D374282BEE05370073F19D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		B37AB4D72BEE4883005CE6BC /* auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = auth.swift; sourceTree = "<group>"; };
 		B37AB4DF2BEE4CF9005CE6BC /* Dine Rewards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Dine Rewards.entitlements"; sourceTree = "<group>"; };
+		B3EAC5C42BEE551800D493D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B3EAC5C62BEE621400D493D1 /* Dine-Rewards-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Dine-Rewards-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +117,8 @@
 		365A67442BEA0E8700ECED78 /* Dine Rewards */ = {
 			isa = PBXGroup;
 			children = (
+				B3EAC5C62BEE621400D493D1 /* Dine-Rewards-Info.plist */,
+				B3EAC5C42BEE551800D493D1 /* GoogleService-Info.plist */,
 				B37AB4DF2BEE4CF9005CE6BC /* Dine Rewards.entitlements */,
 				B37AB4D62BEE486C005CE6BC /* API */,
 				3644B6472BECE6B50000044A /* Views */,
@@ -271,6 +276,7 @@
 			files = (
 				365A674D2BEA0E8800ECED78 /* Preview Assets.xcassets in Resources */,
 				365A674A2BEA0E8800ECED78 /* Assets.xcassets in Resources */,
+				B3EAC5C52BEE551800D493D1 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,11 +472,13 @@
 				DEVELOPMENT_TEAM = 76JC544WPM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Dine-Rewards-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -496,11 +504,13 @@
 				DEVELOPMENT_TEAM = 76JC544WPM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Dine-Rewards-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
