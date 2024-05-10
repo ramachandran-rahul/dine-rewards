@@ -14,6 +14,7 @@
 		365A67572BEA0E8800ECED78 /* Dine_RewardsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365A67562BEA0E8800ECED78 /* Dine_RewardsTests.swift */; };
 		365A67612BEA0E8800ECED78 /* Dine_RewardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365A67602BEA0E8800ECED78 /* Dine_RewardsUITests.swift */; };
 		365A67632BEA0E8800ECED78 /* Dine_RewardsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365A67622BEA0E8800ECED78 /* Dine_RewardsUITestsLaunchTests.swift */; };
+		36D374292BEE05370073F19D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D374282BEE05370073F19D /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		365A675C2BEA0E8800ECED78 /* Dine RewardsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dine RewardsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		365A67602BEA0E8800ECED78 /* Dine_RewardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dine_RewardsUITests.swift; sourceTree = "<group>"; };
 		365A67622BEA0E8800ECED78 /* Dine_RewardsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dine_RewardsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		36D374282BEE05370073F19D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +73,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3644B6472BECE6B50000044A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				365A67472BEA0E8700ECED78 /* ContentView.swift */,
+				36D374282BEE05370073F19D /* LoginView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		365A67392BEA0E8700ECED78 = {
 			isa = PBXGroup;
 			children = (
@@ -94,8 +105,8 @@
 		365A67442BEA0E8700ECED78 /* Dine Rewards */ = {
 			isa = PBXGroup;
 			children = (
+				3644B6472BECE6B50000044A /* Views */,
 				365A67452BEA0E8700ECED78 /* Dine_RewardsApp.swift */,
-				365A67472BEA0E8700ECED78 /* ContentView.swift */,
 				365A67492BEA0E8800ECED78 /* Assets.xcassets */,
 				365A674B2BEA0E8800ECED78 /* Preview Content */,
 			);
@@ -257,6 +268,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36D374292BEE05370073F19D /* LoginView.swift in Sources */,
 				365A67482BEA0E8700ECED78 /* ContentView.swift in Sources */,
 				365A67462BEA0E8700ECED78 /* Dine_RewardsApp.swift in Sources */,
 			);
