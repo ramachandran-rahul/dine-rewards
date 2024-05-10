@@ -15,6 +15,10 @@
 		365A67612BEA0E8800ECED78 /* Dine_RewardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365A67602BEA0E8800ECED78 /* Dine_RewardsUITests.swift */; };
 		365A67632BEA0E8800ECED78 /* Dine_RewardsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365A67622BEA0E8800ECED78 /* Dine_RewardsUITestsLaunchTests.swift */; };
 		36D374292BEE05370073F19D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D374282BEE05370073F19D /* LoginView.swift */; };
+		B37AB4D82BEE4883005CE6BC /* auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AB4D72BEE4883005CE6BC /* auth.swift */; };
+		B37AB4DA2BEE4B8E005CE6BC /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B37AB4D92BEE4B8E005CE6BC /* FirebaseAuth */; };
+		B37AB4DC2BEE4B8E005CE6BC /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = B37AB4DB2BEE4B8E005CE6BC /* FirebaseAuthCombine-Community */; };
+		B37AB4DE2BEE4B8E005CE6BC /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = B37AB4DD2BEE4B8E005CE6BC /* FirebaseDatabase */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +50,8 @@
 		365A67602BEA0E8800ECED78 /* Dine_RewardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dine_RewardsUITests.swift; sourceTree = "<group>"; };
 		365A67622BEA0E8800ECED78 /* Dine_RewardsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dine_RewardsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		36D374282BEE05370073F19D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		B37AB4D72BEE4883005CE6BC /* auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = auth.swift; sourceTree = "<group>"; };
+		B37AB4DF2BEE4CF9005CE6BC /* Dine Rewards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Dine Rewards.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +59,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B37AB4DE2BEE4B8E005CE6BC /* FirebaseDatabase in Frameworks */,
+				B37AB4DA2BEE4B8E005CE6BC /* FirebaseAuth in Frameworks */,
+				B37AB4DC2BEE4B8E005CE6BC /* FirebaseAuthCombine-Community in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +114,8 @@
 		365A67442BEA0E8700ECED78 /* Dine Rewards */ = {
 			isa = PBXGroup;
 			children = (
+				B37AB4DF2BEE4CF9005CE6BC /* Dine Rewards.entitlements */,
+				B37AB4D62BEE486C005CE6BC /* API */,
 				3644B6472BECE6B50000044A /* Views */,
 				365A67452BEA0E8700ECED78 /* Dine_RewardsApp.swift */,
 				365A67492BEA0E8800ECED78 /* Assets.xcassets */,
@@ -138,6 +149,14 @@
 			path = "Dine RewardsUITests";
 			sourceTree = "<group>";
 		};
+		B37AB4D62BEE486C005CE6BC /* API */ = {
+			isa = PBXGroup;
+			children = (
+				B37AB4D72BEE4883005CE6BC /* auth.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -154,6 +173,11 @@
 			dependencies = (
 			);
 			name = "Dine Rewards";
+			packageProductDependencies = (
+				B37AB4D92BEE4B8E005CE6BC /* FirebaseAuth */,
+				B37AB4DB2BEE4B8E005CE6BC /* FirebaseAuthCombine-Community */,
+				B37AB4DD2BEE4B8E005CE6BC /* FirebaseDatabase */,
+			);
 			productName = "Dine Rewards";
 			productReference = 365A67422BEA0E8700ECED78 /* Dine Rewards.app */;
 			productType = "com.apple.product-type.application";
@@ -226,6 +250,9 @@
 				Base,
 			);
 			mainGroup = 365A67392BEA0E8700ECED78;
+			packageReferences = (
+				B37AB4D52BEE4723005CE6BC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 365A67432BEA0E8700ECED78 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -271,6 +298,7 @@
 				36D374292BEE05370073F19D /* LoginView.swift in Sources */,
 				365A67482BEA0E8700ECED78 /* ContentView.swift in Sources */,
 				365A67462BEA0E8700ECED78 /* Dine_RewardsApp.swift in Sources */,
+				B37AB4D82BEE4883005CE6BC /* auth.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,9 +459,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Dine Rewards/Dine Rewards.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Dine Rewards/Preview Content\"";
+				DEVELOPMENT_TEAM = 76JC544WPM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -459,9 +489,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Dine Rewards/Dine Rewards.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Dine Rewards/Preview Content\"";
+				DEVELOPMENT_TEAM = 76JC544WPM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -594,6 +626,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B37AB4D52BEE4723005CE6BC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.25.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B37AB4D92BEE4B8E005CE6BC /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B37AB4D52BEE4723005CE6BC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		B37AB4DB2BEE4B8E005CE6BC /* FirebaseAuthCombine-Community */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B37AB4D52BEE4723005CE6BC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAuthCombine-Community";
+		};
+		B37AB4DD2BEE4B8E005CE6BC /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B37AB4D52BEE4723005CE6BC /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 365A673A2BEA0E8700ECED78 /* Project object */;
 }
