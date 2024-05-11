@@ -8,15 +8,15 @@
 import SwiftUI
 import AVFoundation
 
-struct ListRewardsView: View {
+struct ListRestaurantView: View {
     @State private var isShowingScanner = false
 
     
     // Sample data for the list
     let rewards = [
-        Reward(image: "gift", title: "Free Coffee", description: "Get a free coffee with your next purchase", expiryDate: "Expires 06/15/2024"),
-        Reward(image: "ticket", title: "Movie Night", description: "20% off on next movie ticket", expiryDate: "Expires 08/01/2024"),
-        Reward(image: "trophy", title: "Champion's Discount", description: "10% off on sports items", expiryDate: "Expires 12/25/2024")
+        Reward(image: "gift", title: "Restaurant 1", description: "Get a free coffee with your next purchase", expiryDate: "Expires 06/15/2024"),
+        Reward(image: "ticket", title: "Restaurant 2", description: "20% off for your meal", expiryDate: "Expires 08/01/2024"),
+        Reward(image: "trophy", title: "Restaurant 3", description: "10% off on any drink", expiryDate: "Expires 12/25/2024")
     ]
 
     var body: some View {
@@ -70,9 +70,9 @@ struct ListRewardsView: View {
     }
 }
 
-struct ListRewardsView_Previews: PreviewProvider {
+struct ListRestaurantView_Previews: PreviewProvider {
     static var previews: some View {
-        ListRewardsView()
+        ListRestaurantView()
             .preferredColorScheme(.dark)
     }
 }

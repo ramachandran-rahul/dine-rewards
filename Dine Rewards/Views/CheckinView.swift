@@ -9,8 +9,7 @@ import SwiftUI
 import AVFoundation
 
 struct CheckinView: View {
-    @State private var isShowingScanner = false
-
+    @State private var showingLocationConfirm = false
     
     var body: some View {
         ScrollView {
@@ -64,46 +63,20 @@ struct CheckinView: View {
                 .padding()
                 .background(Color.white)
 
-                // Membership info
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Your Membership:")
-                    Text("Faye Wong")
-                    Text("Joined 1 Apr 2024")
-                }
-                .padding()
-                .background(Color.white)
-
-                // Redeemables section
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Your Redeemables (3)")
-                        .font(.headline)
-                        .bold()
-                    ScrollView(.horizontal, showsIndicators: false) {
-                        HStack(spacing: 10) {
-                            RedeemableView(title: "Free Welcome Drink", expiry: "Expires 31 Dec 2024")
-                            RedeemableView(title: "Free Dessert", expiry: "Expires 31 Dec 2024")
-                        }
-                    }
-                }
-                .padding()
-                .background(Color.white)
-                Button(action: {
-                                    self.isShowingScanner = true
-                                }) {
-                                    Text("Scan QR Code")
-                                        .foregroundColor(.white)
-                                        .padding()
-                                        .background(Color.blue)
-                                        .cornerRadius(10)
-                                }
-                                .padding(.bottom)
+                Button("Check-in") {
+                                  showingLocationConfirm = true
+                              }
+                              .padding()
+                              .foregroundColor(.white)
+                              .background(Color.blue)
+                              .cornerRadius(10)
             }
             .padding(.horizontal)
         }
         .background(Color.gray.opacity(0.1))
-        .sheet(isPresented: $isShowingScanner) {
-                    QRCodeScannerView()
-                }
+        .sheet(isPresented: $showingLocationConfirm) {
+            LocationConfirmationView()
+        }
     }
 }
 

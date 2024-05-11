@@ -13,7 +13,12 @@ struct LoginView: View {
     @State private var shouldNavigate: Bool = false
     
     var body: some View {
+        
         VStack {
+            NavigationLink(destination: ListRestaurantView(), isActive: $shouldNavigate) {
+                                EmptyView()
+                            }
+            
             Spacer()
             // Logo
             Circle()
@@ -121,10 +126,6 @@ struct LoginView: View {
                     guard success else {return}
                     DispatchQueue.main.async {
                         shouldNavigate.toggle()
-                        //debug
-                        print("succesfully verified OTP")
-                        
-                        // TODO: handle what happens once otp verification is successful
                     }
                 }
             }) {
