@@ -12,6 +12,7 @@ struct LoginView: View {
     @State private var phoneNumber: String = ""
     @State private var processedNumber: String = ""
     @State private var shouldNavigate: Bool = false
+    @State private var showError: Bool = false
     
     func onPhoneInputEdit(_: iPhoneNumberField.UIViewType) {
         processedNumber = phoneNumber.replacingOccurrences(of: "[\\s()-]+", with: "", options: .regularExpression)
@@ -55,24 +56,6 @@ struct LoginView: View {
                 .padding(.top, 10)
             
             // Phone number entry
-//            TextField("Phone Number", text: $phoneNumber)
-//                .keyboardType(.numberPad)
-//                .foregroundColor(.black)
-//                .padding(.leading, 40)
-//                .padding(.vertical, 10)
-//                .background(Color.white)
-//                .cornerRadius(5)
-//                .overlay(
-//                    HStack {
-//                        Image(systemName: "phone.fill")
-//                            .foregroundColor(.red)
-//                            .padding(.leading, 10)
-//                        Spacer()
-//                    }
-//                )
-//                .padding(.horizontal)
-//                .padding(.top, 10)
-            
             iPhoneNumberField("Phone Number", text: $phoneNumber)
                 .flagHidden(false)
                 .flagSelectable(true)
@@ -98,21 +81,26 @@ struct LoginView: View {
                 .padding(.horizontal)
                 .padding(.top, 10)
             
+            if showError {
+                Text("Invalid phone number")
+                    .foregroundColor(.red)
+                    .padding(.top, 10)
+            }
+            
             // Continue button
             Button(action: {
                 // Action for the button
-//                Auth.shared.startAuth(phoneNumber: phoneNumber) { success in
-//                    guard success else {return}
-//                    DispatchQueue.main.async {
-//                        shouldNavigate.toggle()
-//                        //debug
-//                        print("Api call successful")
-//                        
-//                        // TODO: Separate the phone number and OTP screen.
-//                        // TODO: Add phone number validation
-//                        // TODO: Add OTP auto shift to next box and auto clear if unsuccessfull
-//                    }
-//                }
+                Auth.shared.startAuth(phoneNumber: processedNumber) { success in
+                    DispatchQueue.main.async {
+                        if success {
+                            shouldNavigate.toggle()
+                            //debug
+                            print("Api call successful")
+                        } else {
+                            showError = true
+                        }
+                    }
+                }
             }) {
                 Text("Continue")
                     .foregroundColor(.white)
@@ -124,6 +112,12 @@ struct LoginView: View {
             .disabled(processedNumber.count < 9)
             .padding(.horizontal)
             .padding(.top, 20)
+            .background(
+                NavigationLink(destination: LoginOTPEntryView(phoneNumber: $phoneNumber), isActive: $shouldNavigate) {
+                    EmptyView()
+                }
+                    .isDetailLink(false) // Prevents opening a new detail view on iPad
+            )
             
             Spacer()
         }
