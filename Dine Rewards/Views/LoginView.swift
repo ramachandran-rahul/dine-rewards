@@ -56,10 +56,11 @@ struct LoginView: View {
                 .padding(.top, 10)
             
             // Phone number entry
-            iPhoneNumberField("Phone Number", text: $phoneNumber)
+            iPhoneNumberField(text: $phoneNumber)
                 .flagHidden(false)
                 .flagSelectable(true)
                 .maximumDigits(10)
+                .prefixHidden(false)
                 .autofillPrefix(true)
                 .formatted()
                 .onEdit(perform: onPhoneInputEdit)
