@@ -103,14 +103,19 @@ struct LoginOTPEntryView: View {
                         )
                         .multilineTextAlignment(.center)
                         .keyboardType(.numberPad)
-                        .onChange(of: otp[index]) { newValue in
+                        .onChange(of: otp[index]) { oldvalue, newValue in
                             let filtered = newValue.filter { "0123456789".contains($0) }
                             if filtered.count <= 1 {
                                 otp[index] = filtered
                             } else {
                                 otp[index] = String(filtered.prefix(1))
                             }
+                            
+                            if newValue.count == 1 && index < 5 {
+                                focusedField = index + 1
+                            }
                         }
+                        .focused($focusedField, equals: index)
                 }
             }
             .padding(.horizontal)
