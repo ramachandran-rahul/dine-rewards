@@ -14,7 +14,7 @@ struct ContentView: View {
         ZStack {
             Color.black.edgesIgnoringSafeArea(.all)
             if isActive {
-                ListRewardsView() // Redirects to the Login View after delay
+                LoginView() // Redirects to the Login View after delay
             } else {
                 VStack {
                     Spacer()
