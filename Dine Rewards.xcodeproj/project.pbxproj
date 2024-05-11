@@ -15,6 +15,11 @@
 		365A67612BEA0E8800ECED78 /* Dine_RewardsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365A67602BEA0E8800ECED78 /* Dine_RewardsUITests.swift */; };
 		365A67632BEA0E8800ECED78 /* Dine_RewardsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365A67622BEA0E8800ECED78 /* Dine_RewardsUITestsLaunchTests.swift */; };
 		36D374292BEE05370073F19D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D374282BEE05370073F19D /* LoginView.swift */; };
+		A260095A2BEF02AE00DB507C /* ListRewardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26009572BEF02AE00DB507C /* ListRewardsView.swift */; };
+		A260095B2BEF02AE00DB507C /* CheckinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26009582BEF02AE00DB507C /* CheckinView.swift */; };
+		A260095C2BEF02AE00DB507C /* QRCodeScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26009592BEF02AE00DB507C /* QRCodeScannerView.swift */; };
+		A26009602BEF02F700DB507C /* Reward.swift in Sources */ = {isa = PBXBuildFile; fileRef = A260095E2BEF02F700DB507C /* Reward.swift */; };
+		A26009622BEF05CA00DB507C /* LocationConfirmationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A26009612BEF05CA00DB507C /* LocationConfirmationView.swift */; };
 		B37AB4D82BEE4883005CE6BC /* auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AB4D72BEE4883005CE6BC /* auth.swift */; };
 		B37AB4DA2BEE4B8E005CE6BC /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B37AB4D92BEE4B8E005CE6BC /* FirebaseAuth */; };
 		B37AB4DC2BEE4B8E005CE6BC /* FirebaseAuthCombine-Community in Frameworks */ = {isa = PBXBuildFile; productRef = B37AB4DB2BEE4B8E005CE6BC /* FirebaseAuthCombine-Community */; };
@@ -51,6 +56,11 @@
 		365A67602BEA0E8800ECED78 /* Dine_RewardsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dine_RewardsUITests.swift; sourceTree = "<group>"; };
 		365A67622BEA0E8800ECED78 /* Dine_RewardsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dine_RewardsUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		36D374282BEE05370073F19D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		A26009572BEF02AE00DB507C /* ListRewardsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListRewardsView.swift; sourceTree = "<group>"; };
+		A26009582BEF02AE00DB507C /* CheckinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckinView.swift; sourceTree = "<group>"; };
+		A26009592BEF02AE00DB507C /* QRCodeScannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeScannerView.swift; sourceTree = "<group>"; };
+		A260095E2BEF02F700DB507C /* Reward.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reward.swift; sourceTree = "<group>"; };
+		A26009612BEF05CA00DB507C /* LocationConfirmationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationConfirmationView.swift; sourceTree = "<group>"; };
 		B37AB4D72BEE4883005CE6BC /* auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = auth.swift; sourceTree = "<group>"; };
 		B37AB4DF2BEE4CF9005CE6BC /* Dine Rewards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Dine Rewards.entitlements"; sourceTree = "<group>"; };
 		B3EAC5C42BEE551800D493D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -88,8 +98,12 @@
 		3644B6472BECE6B50000044A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A26009582BEF02AE00DB507C /* CheckinView.swift */,
+				A26009572BEF02AE00DB507C /* ListRewardsView.swift */,
+				A26009592BEF02AE00DB507C /* QRCodeScannerView.swift */,
 				365A67472BEA0E8700ECED78 /* ContentView.swift */,
 				36D374282BEE05370073F19D /* LoginView.swift */,
+				A26009612BEF05CA00DB507C /* LocationConfirmationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -117,6 +131,7 @@
 		365A67442BEA0E8700ECED78 /* Dine Rewards */ = {
 			isa = PBXGroup;
 			children = (
+				A260095F2BEF02F700DB507C /* Models */,
 				B3EAC5C62BEE621400D493D1 /* Dine-Rewards-Info.plist */,
 				B3EAC5C42BEE551800D493D1 /* GoogleService-Info.plist */,
 				B37AB4DF2BEE4CF9005CE6BC /* Dine Rewards.entitlements */,
@@ -152,6 +167,14 @@
 				365A67622BEA0E8800ECED78 /* Dine_RewardsUITestsLaunchTests.swift */,
 			);
 			path = "Dine RewardsUITests";
+			sourceTree = "<group>";
+		};
+		A260095F2BEF02F700DB507C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A260095E2BEF02F700DB507C /* Reward.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		B37AB4D62BEE486C005CE6BC /* API */ = {
@@ -301,9 +324,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A260095C2BEF02AE00DB507C /* QRCodeScannerView.swift in Sources */,
 				36D374292BEE05370073F19D /* LoginView.swift in Sources */,
+				A26009622BEF05CA00DB507C /* LocationConfirmationView.swift in Sources */,
 				365A67482BEA0E8700ECED78 /* ContentView.swift in Sources */,
+				A260095B2BEF02AE00DB507C /* CheckinView.swift in Sources */,
+				A26009602BEF02F700DB507C /* Reward.swift in Sources */,
 				365A67462BEA0E8700ECED78 /* Dine_RewardsApp.swift in Sources */,
+				A260095A2BEF02AE00DB507C /* ListRewardsView.swift in Sources */,
 				B37AB4D82BEE4883005CE6BC /* auth.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -6,8 +6,12 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct ListRewardsView: View {
+    @State private var isShowingScanner = false
+
+    
     // Sample data for the list
     let rewards = [
         Reward(image: "gift", title: "Free Coffee", description: "Get a free coffee with your next purchase", expiryDate: "Expires 06/15/2024"),
@@ -47,8 +51,21 @@ struct ListRewardsView: View {
                     .padding(.vertical)
                 }
                 .listStyle(PlainListStyle())
+                Button(action: {
+                    self.isShowingScanner = true
+                }) {
+                    Text("Scan QR Code")
+                        .foregroundColor(.white)
+                        .padding()
+                        .background(Color.blue)
+                        .cornerRadius(10)
+                }
+                .padding(.bottom)
             }
             .background(Color.black)
+        }
+        .sheet(isPresented: $isShowingScanner) {
+            QRCodeScannerView()
         }
     }
 }
