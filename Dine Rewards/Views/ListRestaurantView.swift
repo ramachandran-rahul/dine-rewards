@@ -56,7 +56,7 @@ struct ListRestaurantView: View {
                     Text("Scan QR Code")
                         .foregroundColor(.white)
                         .padding()
-                        .background(Color.blue)
+                        .background(Color.red)
                         .cornerRadius(10)
                 }
                 .padding(.bottom)
