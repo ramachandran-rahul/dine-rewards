@@ -10,7 +10,11 @@ import Foundation
 struct Restaurant: Identifiable, Codable {
     var id: String
     var title: String
-//    var description: String
-//    var expiryDate: String
-//    var image: String
+    var image: String
+    var lastCheckin: Date
+    var currentCheckins: Int
+    var targetCheckins: Int
+    var phone: String
+    var reward: String
+    var status: String
 }

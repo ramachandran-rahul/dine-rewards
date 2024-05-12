@@ -9,6 +9,7 @@ import SwiftUI
 import AVFoundation
 
 struct CheckinView: View {
+    var restaurant: Restaurant
     @State private var showingLocationConfirm = false
     
     var body: some View {
@@ -26,7 +27,6 @@ struct CheckinView: View {
                 .padding()
                 .background(Color.white.opacity(0.9))
 
-                // Table status
                 VStack(alignment: .leading, spacing: 10) {
                     Text("You’re at Table A1")
                         .font(.title3)
@@ -56,7 +56,7 @@ struct CheckinView: View {
                     MilestoneView(number: "2nd Check-in", date: "Complete by 31 Dec 2024")
                     MilestoneView(number: "3rd Check-in", date: "Complete by 31 Dec 2024")
                     Button(action: {}) {
-                        Text("Get a surprise main dish and drink!")
+                        Text(restaurant.reward)
                     }
                     .buttonStyle(.borderedProminent)
                 }
@@ -64,12 +64,12 @@ struct CheckinView: View {
                 .background(Color.white)
 
                 Button("Check-in") {
-                                  showingLocationConfirm = true
-                              }
-                              .padding()
-                              .foregroundColor(.white)
-                              .background(Color.blue)
-                              .cornerRadius(10)
+                      showingLocationConfirm = true
+                  }
+                  .padding()
+                  .foregroundColor(.white)
+                  .background(Color.blue)
+                  .cornerRadius(10)
             }
             .padding(.horizontal)
         }
@@ -119,9 +119,4 @@ struct RedeemableView: View {
     }
 }
 
-// Preview
-struct CheckinView_Previews: PreviewProvider {
-    static var previews: some View {
-        CheckinView()
-    }
-}
+

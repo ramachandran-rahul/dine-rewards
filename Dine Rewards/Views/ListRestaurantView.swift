@@ -13,14 +13,6 @@ struct ListRestaurantView: View {
     @ObservedObject var viewModel = RestaurantViewModel()
 
 
-    
-    // Sample data for the list
-//    let rewards = [
-//        Restaurant(image: "gift", title: "Restaurant 1", description: "Get a free coffee with your next purchase", expiryDate: "Expires 06/15/2024"),
-//        Restaurant(image: "ticket", title: "Restaurant 2", description: "20% off for your meal", expiryDate: "Expires 08/01/2024"),
-//        Restaurant(image: "trophy", title: "Restaurant 3", description: "10% off on any drink", expiryDate: "Expires 12/25/2024")
-//    ]
-
     var body: some View {
         NavigationView {
             VStack {
@@ -31,27 +23,25 @@ struct ListRestaurantView: View {
                     .background(Color.red)
                     .frame(maxWidth: .infinity, alignment: .center)
 
-                List(viewModel.restaurants) { reward in
-                    HStack {
-                        // Assuming you're using remote URLs for images
-//                        AsyncImage(url: URL(string: reward.image)) { image in
-//                            image.resizable()
-//                        } placeholder: {
-//                            ProgressView()
-//                        }
-//                        .frame(width: 50, height: 50)
-//                        .cornerRadius(8)
+                List {
+                    ForEach(sortedRestaurants) { restaurant in
+                        if restaurant.status == "COMPLETED" {
+                            NavigationLink(destination: UseRewardView(restaurant: restaurant)) {
+                               RestaurantRow(restaurant: restaurant)
+                           }
+                        }
+                    }
+        
 
-                        VStack(alignment: .leading) {
-                            Text(reward.title)
-                                .foregroundColor(.white)
-                                .font(.headline)
-//                            Text(reward.description)
-//                                .foregroundColor(.white)
-//                                .font(.subheadline)
-//                            Text("Expires on \(reward.expiryDate)")
-//                                .foregroundColor(.gray)
-//                                .font(.caption)
+                    if containsCompleted && containsOther {
+                        Divider()
+                    }
+
+                    ForEach(sortedRestaurants) { restaurant in
+                        if restaurant.status != "COMPLETED" {
+                            NavigationLink(destination: CheckinView(restaurant: restaurant)) {
+                               RestaurantRow(restaurant: restaurant)
+                           }
                         }
                     }
                 }
@@ -76,6 +66,46 @@ struct ListRestaurantView: View {
             QRCodeScannerView()
         }
     }
+    
+    var containsCompleted: Bool {
+        viewModel.restaurants.contains(where: { $0.status == "COMPLETED" })
+    }
+
+    var containsOther: Bool {
+        viewModel.restaurants.contains(where: { $0.status != "COMPLETED" })
+    }
+
+    var sortedRestaurants: [Restaurant] {
+        viewModel.restaurants.sorted { $0.status == "COMPLETED" && $1.status != "COMPLETED" }
+    }
+    
+    struct RestaurantRow: View {
+        var restaurant: Restaurant
+        
+        var body: some View {
+            HStack {
+                AsyncImage(url: URL(string: restaurant.image)) { image in
+                    image.resizable()
+                } placeholder: {
+                    ProgressView()
+                }
+                .frame(width: 50, height: 50)
+                .cornerRadius(8)
+
+                VStack(alignment: .leading) {
+                    Text(restaurant.title)
+                        .font(.headline)
+                    Text("Reward: \(restaurant.reward)")
+                        .font(.subheadline)
+                    Text("Progress: \(restaurant.currentCheckins)/\(restaurant.targetCheckins)")
+                        .font(.subheadline)
+                    Text("Status: \(restaurant.status)")
+                        .font(.subheadline)
+                }
+            }
+        }
+    }
+
 }
 
 struct ListRestaurantView_Previews: PreviewProvider {
