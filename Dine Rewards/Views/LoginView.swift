@@ -6,19 +6,20 @@
 //
 
 import SwiftUI
+import iPhoneNumberField
 
 struct LoginView: View {
     @State private var phoneNumber: String = ""
-    @State private var otp: [String] = Array(repeating: "", count: 6)
+    @State private var processedNumber: String = ""
     @State private var shouldNavigate: Bool = false
+    @State private var showError: Bool = false
+    
+    func onPhoneInputEdit(_: iPhoneNumberField.UIViewType) {
+        processedNumber = phoneNumber.replacingOccurrences(of: "[\\s()-]+", with: "", options: .regularExpression)
+    }
     
     var body: some View {
-        
         VStack {
-            NavigationLink(destination: ListRestaurantView(), isActive: $shouldNavigate) {
-                                EmptyView()
-                            }
-            
             Spacer()
             // Logo
             Circle()
@@ -47,7 +48,7 @@ struct LoginView: View {
             }
             
             // Explanation text
-            Text("If you’ve interacted with any restaurant partners using DineRewards, you can use the same phone number again.")
+            Text("If you’ve interacted with any of our restaurant partners using DineRewards, you can use the same phone number again.")
                 .font(.subheadline)
                 .foregroundColor(.gray)
                 .multilineTextAlignment(.center)
@@ -55,77 +56,50 @@ struct LoginView: View {
                 .padding(.top, 10)
             
             // Phone number entry
-            HStack {
-                TextField("Phone Number", text: $phoneNumber)
-                    .keyboardType(.numberPad)
-                    .foregroundColor(.black)
-                    .padding(.leading, 40)
-                    .padding(.vertical, 10)
-                    .background(Color.white)
-                    .cornerRadius(5)
-                    .overlay(
-                        HStack {
-                            Image(systemName: "phone.fill")
-                                .foregroundColor(.red)
-                                .padding(.leading, 10)
-                            Spacer()
-                        }
-                    )
-                    .padding(.horizontal)
-                .padding(.top, 10)
-                
-                Button(action: {
-                    // Action for the button
-                    Auth.shared.startAuth(phoneNumber: phoneNumber) { success in
-                        guard success else {return}
-                        DispatchQueue.main.async {
-                            shouldNavigate.toggle()
-                            //debug
-                            print("Api call successful")
-                            
-                            // TODO: Separate the phone number and OTP screen.
-                            // TODO: Add phone number validation
-                            // TODO: Add OTP auto shift to next box and auto clear if unsuccessfull
-                        }
+            iPhoneNumberField(text: $phoneNumber)
+                .flagHidden(false)
+                .flagSelectable(true)
+                .maximumDigits(10)
+                .prefixHidden(false)
+                .autofillPrefix(true)
+                .formatted()
+                .onEdit(perform: onPhoneInputEdit)
+                .clearButtonMode(.whileEditing)
+                .keyboardType(.numberPad)
+                .foregroundColor(.black)
+                .padding(.leading, 40)
+                .padding(.vertical, 10)
+                .background(Color.white)
+                .cornerRadius(5)
+                .overlay(
+                    HStack {
+                        Image(systemName: "phone.fill")
+                            .foregroundColor(.red)
+                            .padding(.leading, 10)
+                        Spacer()
                     }
-                }) {
-                    Text(">")
-                        .foregroundColor(.white)
-                        .frame(maxWidth: 20)
-                        .padding()
-                        .background(Color.red)
-                        .cornerRadius(10)
-                }
+                )
                 .padding(.horizontal)
-                .padding(.top, 20)
-            }
+                .padding(.top, 10)
             
-            // OTP entry
-            HStack(spacing: 10) {
-                ForEach(0..<6, id: \.self) { index in
-                    TextField("", text: $otp[index])
-                    .frame(width: 45, height: 45)
-                    .textFieldStyle(PlainTextFieldStyle())
-                    .background(Color.white)
-                    .cornerRadius(5)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 5)
-                            .stroke(Color.gray, lineWidth: 1)
-                    )
-                    .multilineTextAlignment(.center)
-                    .keyboardType(.numberPad)
-                }
+            if showError {
+                Text("Invalid phone number")
+                    .foregroundColor(.red)
+                    .padding(.top, 10)
             }
-            .padding(.horizontal)
-            .padding(.top, 20)
             
             // Continue button
             Button(action: {
                 // Action for the button
-                Auth.shared.verifyCode(smsCode: otp.joined()){ success in
-                    guard success else {return}
+                Auth.shared.startAuth(phoneNumber: processedNumber) { success in
                     DispatchQueue.main.async {
-                        shouldNavigate.toggle()
+                        if success {
+                            shouldNavigate.toggle()
+                            //debug
+                            print("Api call successful")
+                        } else {
+                            showError = true
+                        }
                     }
                 }
             }) {
@@ -133,11 +107,18 @@ struct LoginView: View {
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(Color.red)
+                    .background(processedNumber.count < 9 ? Color.gray : Color.red)
                     .cornerRadius(10)
             }
+            .disabled(processedNumber.count < 9)
             .padding(.horizontal)
             .padding(.top, 20)
+            .background(
+                NavigationLink(destination: LoginOTPEntryView(phoneNumber: $phoneNumber), isActive: $shouldNavigate) {
+                    EmptyView()
+                }
+                    .isDetailLink(false) // Prevents opening a new detail view on iPad
+            )
             
             Spacer()
         }
