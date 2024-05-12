@@ -43,6 +43,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 struct Dine_RewardsApp: App {
     // register app delegate for firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @StateObject var viewModel = RestaurantViewModel()
     
     var body: some Scene {
         WindowGroup {
@@ -51,6 +52,7 @@ struct Dine_RewardsApp: App {
                     print("Received URL: \(url)")
                     FirebaseAuth.Auth.auth().canHandle(url) // <- just for information purposes
                 }
+                .environmentObject(viewModel)
         }
     }
 }

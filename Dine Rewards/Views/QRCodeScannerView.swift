@@ -14,6 +14,9 @@ struct QRCodeScannerView: UIViewControllerRepresentable {
 class QRScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var captureSession: AVCaptureSession?
     var previewLayer: AVCaptureVideoPreviewLayer?
+    var phone = "+61444444444"
+    
+    var viewModel = RestaurantViewModel()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -74,12 +77,29 @@ class QRScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsD
         if let metadataObject = metadataObjects.first as? AVMetadataMachineReadableCodeObject {
             guard let stringValue = metadataObject.stringValue else { return }
             AudioServicesPlaySystemSound(SystemSoundID(kSystemSoundID_Vibrate))
-            dismiss(animated: true) {
-                // Use stringValue from the QR code here
-            }
+            processQRCodeData(qrData: stringValue)
+            dismiss(animated: true)
         }
     }
+    
+    private func processQRCodeData(qrData: String) {
+        guard let data = qrData.data(using: .utf8),
+              let jsonData = try? JSONDecoder().decode(Restaurant.self, from: data) else {
+            print("Error decoding JSON")
+            return
+        }
 
+        var newRestaurant = jsonData
+        newRestaurant.phone = phone
+        newRestaurant.currentCheckins = 1
+        newRestaurant.lastCheckin = Date()
+
+        viewModel.saveData(restaurant: newRestaurant)
+
+        // Potentially notify via NotificationCenter or another method to update the UI
+        NotificationCenter.default.post(name: NSNotification.Name("UpdateUI"), object: nil)
+    }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 

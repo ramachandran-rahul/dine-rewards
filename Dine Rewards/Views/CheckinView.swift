@@ -17,47 +17,34 @@ struct CheckinView: View {
             VStack(spacing: 20) {
                 // Header
                 VStack {
-                    Image(systemName: "circle.fill")
-                        .font(.largeTitle)
-                        .foregroundColor(.red)
-                    Text("7 Treasures Restaurant")
+                    AsyncImage(url: URL(string: restaurant.image)) { image in
+                        image.resizable()
+                    } placeholder: {
+                        ProgressView()
+                    }
+                    .frame(width: 50, height: 50)
+                    .cornerRadius(8)
+                    Text(restaurant.title)
                         .font(.title2)
                         .foregroundColor(.black)
                 }
                 .padding()
                 .background(Color.white.opacity(0.9))
 
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("You’re at Table A1")
-                        .font(.title3)
-                        .bold()
-                    Divider()
-                    HStack {
-                        VStack(alignment: .leading) {
-                            Text("Last Check-in:")
-                            Text("A moment ago")
-                        }
-                        Spacer()
-                        VStack(alignment: .leading) {
-                            Text("Next Milestone:")
-                            Text("3 check-ins by 31 Dec")
-                        }
-                    }
-                }
-                .padding()
-                .background(Color.pink.opacity(0.2))
-
                 // Milestone rewards
                 VStack(alignment: .leading, spacing: 10) {
                     Text("Next Milestone Reward")
                         .font(.headline)
                         .bold()
-                    MilestoneView(number: "1st Check-in", date: "Complete by 31 Dec 2024")
-                    MilestoneView(number: "2nd Check-in", date: "Complete by 31 Dec 2024")
-                    MilestoneView(number: "3rd Check-in", date: "Complete by 31 Dec 2024")
-                    Button(action: {}) {
-                        Text(restaurant.reward)
+                    ForEach(0..<restaurant.targetCheckins, id: \.self) { index in
+                        MilestoneView(
+                            number: "\(index + 1) Check-in",
+                            isCompleted: index < restaurant.currentCheckins
+                        )
                     }
+                    
+                    Text(restaurant.reward).font(.headline)
+                    
                     .buttonStyle(.borderedProminent)
                 }
                 .padding()
@@ -82,40 +69,28 @@ struct CheckinView: View {
 
 struct MilestoneView: View {
     var number: String
-    var date: String
+    var isCompleted: Bool
 
     var body: some View {
         HStack {
-            Circle()
-                .stroke(lineWidth: 2)
-                .frame(width: 20, height: 20)
+            if isCompleted {
+                ZStack {
+                    Circle()
+                        .fill(Color.green)
+                        .frame(width: 20, height: 20)
+                    Image(systemName: "checkmark")
+                        .foregroundColor(.white)
+                        .font(.caption)
+                }
+            } else {
+                Circle()
+                    .stroke(lineWidth: 2)
+                    .frame(width: 20, height: 20)
+            }
             VStack(alignment: .leading) {
                 Text(number)
-                Text(date)
-                    .font(.caption)
             }
         }
-    }
-}
-
-struct RedeemableView: View {
-    var title: String
-    var expiry: String
-
-    var body: some View {
-        VStack {
-            Image(systemName: "gift")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 80, height: 80)
-            Text(title)
-                .font(.caption)
-            Text(expiry)
-                .font(.caption2)
-        }
-        .padding()
-        .background(Color.pink.opacity(0.2))
-        .cornerRadius(10)
     }
 }
 

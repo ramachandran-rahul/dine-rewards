@@ -13,10 +13,12 @@ class RestaurantViewModel: ObservableObject {
 
     private var db = Firestore.firestore()
 
-    func fetchData() {
-        db.collection("restaurant").addSnapshotListener { (querySnapshot, error) in
+    func fetchData(phone: String) {
+        db.collection("restaurant")
+          .whereField("phone", isEqualTo: phone)
+          .addSnapshotListener { (querySnapshot, error) in
             guard let documents = querySnapshot?.documents else {
-                print("No documents")
+                print("No documents or error: \(error?.localizedDescription ?? "Unknown error")")
                 return
             }
 
@@ -24,7 +26,7 @@ class RestaurantViewModel: ObservableObject {
                 let data = queryDocumentSnapshot.data()
                 let title = data["title"] as? String ?? ""
                 let image = data["image"] as? String ?? ""
-                let lastCheckin = data["lastCheckin"] as? Date ?? Date()
+                let lastCheckin = (data["lastCheckin"] as? Timestamp)?.dateValue() ?? Date()
                 let currentCheckins = data["currentCheckins"] as? Int ?? 0
                 let targetCheckins = data["targetCheckins"] as? Int ?? 0
                 let phone = data["phone"] as? String ?? ""
@@ -35,5 +37,38 @@ class RestaurantViewModel: ObservableObject {
             }
         }
     }
+    
+    func saveData(restaurant: Restaurant) {
+        let ref = db.collection("restaurant").document()  // Creating a new document
+        ref.setData([
+            "title": restaurant.title,
+            "image": restaurant.image,
+            "lastCheckin": Timestamp(date: restaurant.lastCheckin),
+            "currentCheckins": restaurant.currentCheckins,
+            "targetCheckins": restaurant.targetCheckins,
+            "phone": restaurant.phone,
+            "reward": restaurant.reward,
+            "status": restaurant.status
+        ]) { error in
+            if let error = error {
+                print("Error writing document: \(error)")
+            } else {
+                print("Document successfully written!")
+            }
+        }
+    }
+    
+    func deleteData(restaurantId: String, phone: String) {
+       db.collection("restaurant").document(restaurantId).delete() { error in
+           if let error = error {
+               print("Error removing document: \(error)")
+           } else {
+               print("Document successfully removed!")
+               DispatchQueue.main.async {
+                   self.fetchData(phone: phone)
+               }
+           }
+       }
+   }
 }
 

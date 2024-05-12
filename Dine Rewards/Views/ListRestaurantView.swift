@@ -11,7 +11,7 @@ import AVFoundation
 struct ListRestaurantView: View {
     @State private var isShowingScanner = false
     @ObservedObject var viewModel = RestaurantViewModel()
-
+    var phone = "+61444444444"
 
     var body: some View {
         NavigationView {
@@ -46,7 +46,7 @@ struct ListRestaurantView: View {
                     }
                 }
                 .onAppear() {
-                    viewModel.fetchData()
+                    viewModel.fetchData(phone: phone)
                 }
                 .listStyle(PlainListStyle())
                 Button(action: {
