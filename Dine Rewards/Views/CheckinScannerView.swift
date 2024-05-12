@@ -9,8 +9,10 @@ import SwiftUI
 import AVFoundation
 
 struct CheckinScannerView: UIViewControllerRepresentable {
+    var phoneNumber: String
+    
     func makeUIViewController(context: Context) -> some UIViewController {
-        let vc = CheckinScannerViewController()
+        let vc = CheckinScannerViewController(phoneNumber: phoneNumber)
         return vc
     }
 
@@ -21,16 +23,27 @@ struct CheckinScannerView: UIViewControllerRepresentable {
 class CheckinScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var captureSession: AVCaptureSession?
     var previewLayer: AVCaptureVideoPreviewLayer?
-    var phone = "+61444444444"
-    
     var viewModel = RestaurantViewModel()
+    var phoneNumber: String
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    init(phoneNumber: String) {
+            self.phoneNumber = phoneNumber
+            super.init(nibName: nil, bundle: nil)
+            self.commonInit()
+        }
 
-        view.backgroundColor = UIColor.black
-        setupScanning()
-    }
+        required init?(coder aDecoder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
+        }
+
+        private func commonInit() {
+            view.backgroundColor = UIColor.black
+            setupScanning()
+        }
+
+        override func viewDidLoad() {
+            super.viewDidLoad()
+        }
 
     func setupScanning() {
         captureSession = AVCaptureSession()
@@ -98,7 +111,7 @@ class CheckinScannerViewController: UIViewController, AVCaptureMetadataOutputObj
 
         var newRestaurant = jsonData
 
-        viewModel.updateCheckin(restaurantId: newRestaurant.id, phone: phone)
+        viewModel.updateCheckin(restaurantId: newRestaurant.id, phone: phoneNumber)
 
         // Potentially notify via NotificationCenter or another method to update the UI
         NotificationCenter.default.post(name: NSNotification.Name("UpdateUI"), object: nil)

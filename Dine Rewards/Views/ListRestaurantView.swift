@@ -11,8 +11,9 @@ import AVFoundation
 struct ListRestaurantView: View {
     @State private var isShowingScanner = false
     @ObservedObject var viewModel = RestaurantViewModel()
-    var phone = "+61444444444"
-
+    var phoneNumber: String
+    
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -26,7 +27,7 @@ struct ListRestaurantView: View {
                 List {
                     ForEach(sortedRestaurants) { restaurant in
                         if restaurant.status == "COMPLETED" {
-                            NavigationLink(destination: UseRewardView(restaurant: restaurant)) {
+                            NavigationLink(destination: UseRewardView(restaurant: restaurant, phoneNumber: phoneNumber)) {
                                RestaurantRow(restaurant: restaurant)
                            }
                         }
@@ -39,14 +40,14 @@ struct ListRestaurantView: View {
 
                     ForEach(sortedRestaurants) { restaurant in
                         if restaurant.status != "COMPLETED" {
-                            NavigationLink(destination: CheckinView(restaurant: restaurant)) {
+                            NavigationLink(destination: CheckinView(restaurant: restaurant, phoneNumber: phoneNumber)) {
                                RestaurantRow(restaurant: restaurant)
                            }
                         }
                     }
                 }
                 .onAppear() {
-                    viewModel.fetchData(phone: phone)
+                    viewModel.fetchData(phone: phoneNumber)
                 }
                 .listStyle(PlainListStyle())
                 Button(action: {
@@ -63,7 +64,7 @@ struct ListRestaurantView: View {
             .background(Color.black)
         }
         .sheet(isPresented: $isShowingScanner) {
-            RestaunrantScannerView()
+            RestaunrantScannerView(phoneNumber: phoneNumber)
         }
     }
     
@@ -106,11 +107,4 @@ struct ListRestaurantView: View {
         }
     }
 
-}
-
-struct ListRestaurantView_Previews: PreviewProvider {
-    static var previews: some View {
-        ListRestaurantView()
-            .preferredColorScheme(.dark)
-    }
 }

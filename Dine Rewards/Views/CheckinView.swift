@@ -10,6 +10,7 @@ import AVFoundation
 
 struct CheckinView: View {
     var restaurant: Restaurant
+    var phoneNumber: String
     @State private var isShowingScanner = false
 
     var body: some View {
@@ -62,7 +63,7 @@ struct CheckinView: View {
         }
         .background(Color.gray.opacity(0.1))
         .sheet(isPresented: $isShowingScanner) {
-            CheckinScannerView()
+            CheckinScannerView(phoneNumber: phoneNumber)
         }
     }
 }

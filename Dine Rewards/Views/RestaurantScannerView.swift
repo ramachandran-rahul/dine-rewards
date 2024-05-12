@@ -9,8 +9,10 @@ import SwiftUI
 import AVFoundation
 
 struct RestaunrantScannerView: UIViewControllerRepresentable {
+    var phoneNumber: String
+    
     func makeUIViewController(context: Context) -> some UIViewController {
-        let vc = RestaunrantScannerViewController()
+        let vc = RestaunrantScannerViewController(phoneNumber: phoneNumber)
         return vc
     }
 
@@ -21,15 +23,26 @@ struct RestaunrantScannerView: UIViewControllerRepresentable {
 class RestaunrantScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var captureSession: AVCaptureSession?
     var previewLayer: AVCaptureVideoPreviewLayer?
-    var phone = "+61444444444"
-    
     var viewModel = RestaurantViewModel()
+    var phoneNumber: String
+
+    init(phoneNumber: String) {
+        self.phoneNumber = phoneNumber
+        super.init(nibName: nil, bundle: nil)
+        self.commonInit()
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    private func commonInit() {
+        view.backgroundColor = UIColor.black
+        setupScanning()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.backgroundColor = UIColor.black
-        setupScanning()
     }
 
     func setupScanning() {
@@ -97,7 +110,7 @@ class RestaunrantScannerViewController: UIViewController, AVCaptureMetadataOutpu
         }
 
         var newRestaurant = jsonData
-        newRestaurant.phone = phone
+        newRestaurant.phone = phoneNumber
         newRestaurant.currentCheckins = 1
         newRestaurant.lastCheckin = Date()
 
