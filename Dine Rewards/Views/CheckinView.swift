@@ -10,8 +10,8 @@ import AVFoundation
 
 struct CheckinView: View {
     var restaurant: Restaurant
-    @State private var showingLocationConfirm = false
-    
+    @State private var isShowingScanner = false
+
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
@@ -51,7 +51,7 @@ struct CheckinView: View {
                 .background(Color.white)
 
                 Button("Check-in") {
-                      showingLocationConfirm = true
+                      isShowingScanner = true
                   }
                   .padding()
                   .foregroundColor(.white)
@@ -61,8 +61,8 @@ struct CheckinView: View {
             .padding(.horizontal)
         }
         .background(Color.gray.opacity(0.1))
-        .sheet(isPresented: $showingLocationConfirm) {
-            LocationConfirmationView()
+        .sheet(isPresented: $isShowingScanner) {
+            CheckinScannerView()
         }
     }
 }

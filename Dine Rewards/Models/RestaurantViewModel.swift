@@ -70,5 +70,50 @@ class RestaurantViewModel: ObservableObject {
            }
        }
    }
+    
+    func updateCheckin(restaurantId: String, phone: String) {
+            let query = db.collection("restaurant")
+                .whereField("id", isEqualTo: restaurantId)
+                .whereField("phone", isEqualTo: phone)
+            
+            query.getDocuments { snapshot, error in
+                guard let document = snapshot?.documents.first else {
+                    print("No document found or error: \(error?.localizedDescription ?? "Unknown error")")
+                    return
+                }
+
+                let transactionBlock: (Transaction, NSErrorPointer) -> Any? = { transaction, errorPointer in
+                    let restaurantDocument: DocumentSnapshot
+                    do {
+                        restaurantDocument = try transaction.getDocument(document.reference)
+                    } catch let fetchError as NSError {
+                        errorPointer?.pointee = fetchError
+                        return nil
+                    }
+                    
+                    guard let currentCheckins = restaurantDocument.data()?["currentCheckins"] as? Int else {
+                        let error = NSError(domain: "AppErrorDomain", code: -1, userInfo: [
+                            NSLocalizedDescriptionKey: "Unable to retrieve current check-ins from document."
+                        ])
+                        errorPointer?.pointee = error
+                        return nil
+                    }
+                    
+                    transaction.updateData(["currentCheckins": currentCheckins + 1, "lastCheckin": Date()], forDocument: document.reference)
+                    return nil
+                }
+
+                self.db.runTransaction(transactionBlock) { object, error in
+                    if let error = error {
+                        print("Transaction failed: \(error)")
+                    } else {
+                        print("Transaction successfully committed!")
+                        self.fetchData(phone: phone)
+                    }
+                }
+            }
+        }
+
+            
 }
 

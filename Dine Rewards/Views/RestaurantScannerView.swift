@@ -1,9 +1,16 @@
+//
+//  RestaurantScannerView.swift
+//  Dine Rewards
+//
+//  Created by Ba Toan Nguyen on 12/5/24.
+//
+
 import SwiftUI
 import AVFoundation
 
-struct QRCodeScannerView: UIViewControllerRepresentable {
+struct RestaunrantScannerView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> some UIViewController {
-        let vc = QRScannerViewController()
+        let vc = RestaunrantScannerViewController()
         return vc
     }
 
@@ -11,7 +18,7 @@ struct QRCodeScannerView: UIViewControllerRepresentable {
     }
 }
 
-class QRScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
+class RestaunrantScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var captureSession: AVCaptureSession?
     var previewLayer: AVCaptureVideoPreviewLayer?
     var phone = "+61444444444"
@@ -108,3 +115,4 @@ class QRScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsD
         }
     }
 }
+

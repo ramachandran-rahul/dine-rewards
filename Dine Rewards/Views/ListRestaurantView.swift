@@ -63,7 +63,7 @@ struct ListRestaurantView: View {
             .background(Color.black)
         }
         .sheet(isPresented: $isShowingScanner) {
-            QRCodeScannerView()
+            RestaunrantScannerView()
         }
     }
     
