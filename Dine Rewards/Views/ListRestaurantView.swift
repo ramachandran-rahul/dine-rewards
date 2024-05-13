@@ -108,5 +108,10 @@ struct ListRestaurantView: View {
             }
         }
     }
+}
 
+struct ListRestaurantView_Previews: PreviewProvider {
+    static var previews: some View {
+        ListRestaurantView(phoneNumber: "+61 4444444444")
+    }
 }

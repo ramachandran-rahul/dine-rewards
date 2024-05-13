@@ -29,3 +29,24 @@ struct UseRewardView: View {
         .cornerRadius(10)
     }
 }
+
+struct UseRewardView_Previews: PreviewProvider {
+    static var previews: some View {
+        UseRewardView(restaurant: sampleRestaurant, phoneNumber: "+614444444444")
+    }
+
+    static var sampleRestaurant: Restaurant {
+        Restaurant(
+            id: "1",
+            title: "The Best Steakhouse",
+            image: "https://i.ibb.co/n3HZnHW/food.jpg",
+            lastCheckin: Date(),
+            currentCheckins: 1,
+            targetCheckins: 3,
+            phone: "123-456-7890",
+            reward: "Free Meal",
+            status: "Active",
+            registeredId: "J30aipdXEwOEdUbxhbJq"
+        )
+    }
+}
