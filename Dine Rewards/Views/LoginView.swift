@@ -5,18 +5,15 @@
 //  Created by Rahul Ramachandran on 10/05/24.
 //
 
+import Foundation
 import SwiftUI
 import iPhoneNumberField
 
 struct LoginView: View {
     @State private var phoneNumber: String = ""
-    @State private var processedNumber: String = ""
     @State private var shouldNavigate: Bool = false
     @State private var showError: Bool = false
-    
-    func onPhoneInputEdit(_: iPhoneNumberField.UIViewType) {
-        processedNumber = phoneNumber.replacingOccurrences(of: "[\\s()-]+", with: "", options: .regularExpression)
-    }
+    @FocusState private var focusedField: Bool
     
     var body: some View {
         VStack {
@@ -60,11 +57,9 @@ struct LoginView: View {
                 .flagHidden(false)
                 .flagSelectable(true)
                 .maximumDigits(10)
-                .prefixHidden(false)
-                .autofillPrefix(true)
-                .formatted()
-                .onEdit(perform: onPhoneInputEdit)
+                .formatted(false)
                 .clearButtonMode(.whileEditing)
+                .focused($focusedField)
                 .keyboardType(.numberPad)
                 .foregroundColor(.black)
                 .padding(.leading, 40)
@@ -90,8 +85,9 @@ struct LoginView: View {
             
             // Continue button
             Button(action: {
+                focusedField = false
                 // Action for the button
-                Auth.shared.startAuth(phoneNumber: processedNumber) { success in
+                Auth.shared.startAuth(phoneNumber: phoneNumber) { success in
                     DispatchQueue.main.async {
                         if success {
                             shouldNavigate.toggle()
@@ -107,10 +103,10 @@ struct LoginView: View {
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)
                     .padding()
-                    .background(processedNumber.count < 9 ? Color.gray : Color.red)
+                    .background(phoneNumber.count < 9 ? Color.gray : Color.red)
                     .cornerRadius(10)
             }
-            .disabled(processedNumber.count < 9)
+            .disabled(phoneNumber.count < 9)
             .padding(.horizontal)
             .padding(.top, 20)
             .background(
@@ -124,6 +120,12 @@ struct LoginView: View {
         }
         .background(Color.black)
         .navigationBarHidden(true)
+        .onAppear{
+            focusedField = true
+        }
+        .onDisappear {
+            focusedField = false
+        }
     }
 }
 
