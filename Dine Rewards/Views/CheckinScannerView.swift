@@ -109,7 +109,7 @@ class CheckinScannerViewController: UIViewController, AVCaptureMetadataOutputObj
             return
         }
 
-        var newRestaurant = jsonData
+        let newRestaurant = jsonData
 
         viewModel.updateCheckin(restaurantId: newRestaurant.id, phone: phoneNumber)
 

@@ -32,13 +32,14 @@ class RestaurantViewModel: ObservableObject {
                 let phone = data["phone"] as? String ?? ""
                 let reward = data["reward"] as? String ?? ""
                 let status = data["status"] as? String ?? ""
+                let registeredId = data["registeredId"] as? String ?? ""
 
-                return Restaurant(id: queryDocumentSnapshot.documentID, title: title, image: image, lastCheckin: lastCheckin, currentCheckins: currentCheckins, targetCheckins: targetCheckins, phone: phone, reward: reward, status: status)
+                return Restaurant(id: queryDocumentSnapshot.documentID, title: title, image: image, lastCheckin: lastCheckin, currentCheckins: currentCheckins, targetCheckins: targetCheckins, phone: phone, reward: reward, status: status, registeredId: registeredId)
             }
         }
     }
     
-    func saveData(restaurant: Restaurant) {
+    func saveData(restaurant: Restaurant, phoneNumber: String) {
         let ref = db.collection("restaurant").document()  // Creating a new document
         ref.setData([
             "title": restaurant.title,
@@ -46,9 +47,10 @@ class RestaurantViewModel: ObservableObject {
             "lastCheckin": Timestamp(date: restaurant.lastCheckin),
             "currentCheckins": restaurant.currentCheckins,
             "targetCheckins": restaurant.targetCheckins,
-            "phone": restaurant.phone,
+            "phone": phoneNumber,
             "reward": restaurant.reward,
-            "status": restaurant.status
+            "status": restaurant.status,
+            "registeredId": restaurant.registeredId
         ]) { error in
             if let error = error {
                 print("Error writing document: \(error)")

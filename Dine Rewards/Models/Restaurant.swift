@@ -17,4 +17,5 @@ struct Restaurant: Identifiable, Codable {
     var phone: String
     var reward: String
     var status: String
+    var registeredId: String
 }

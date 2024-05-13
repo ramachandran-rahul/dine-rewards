@@ -11,7 +11,7 @@ import AVFoundation
 struct CheckinView: View {
     var restaurant: Restaurant
     var phoneNumber: String
-    @State private var isShowingScanner = false
+    @State private var showCodeCheckin = false
 
     var body: some View {
         ScrollView {
@@ -52,7 +52,7 @@ struct CheckinView: View {
                 .background(Color.white)
 
                 Button("Check-in") {
-                      isShowingScanner = true
+                      showCodeCheckin = true
                   }
                   .padding()
                   .foregroundColor(.white)
@@ -62,8 +62,10 @@ struct CheckinView: View {
             .padding(.horizontal)
         }
         .background(Color.gray.opacity(0.1))
-        .sheet(isPresented: $isShowingScanner) {
-            CheckinScannerView(phoneNumber: phoneNumber)
+        .sheet(isPresented: $showCodeRestaurant) {
+            CodeCheckinView(restaurant: restaurant, phoneNumber: phoneNumber, onCompletion: {
+                showCodeRestaurant = false
+            })
         }
     }
 }

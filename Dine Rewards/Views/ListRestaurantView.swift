@@ -9,7 +9,7 @@ import SwiftUI
 import AVFoundation
 
 struct ListRestaurantView: View {
-    @State private var isShowingScanner = false
+    @State private var showCodeRestaurant = false
     @ObservedObject var viewModel = RestaurantViewModel()
     var phoneNumber: String
     
@@ -51,9 +51,9 @@ struct ListRestaurantView: View {
                 }
                 .listStyle(PlainListStyle())
                 Button(action: {
-                    self.isShowingScanner = true
+                    self.showCodeRestaurant = true
                 }) {
-                    Text("Scan QR Code")
+                    Text("Enter Restaurant Code")
                         .foregroundColor(.white)
                         .padding()
                         .background(Color.red)
@@ -63,8 +63,10 @@ struct ListRestaurantView: View {
             }
             .background(Color.black)
         }
-        .sheet(isPresented: $isShowingScanner) {
-            RestaunrantScannerView(phoneNumber: phoneNumber)
+        .sheet(isPresented: $showCodeRestaurant) {
+            CodeRestaurantView(phoneNumber: phoneNumber, onCompletion: {
+                showCodeRestaurant = false
+            })
         }
     }
     
