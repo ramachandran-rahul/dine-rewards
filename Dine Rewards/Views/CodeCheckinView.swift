@@ -11,10 +11,13 @@ struct CodeCheckinView: View {
     var restaurant: Restaurant
     var phoneNumber: String
     var onCompletion: () -> Void
+    
     @State private var code: [String] = Array(repeating: "", count: 4)
     @State private var showingError = false
     @State private var errorMessage = ""
-    @ObservedObject var viewModel = RegisteredRestaurantViewModel()
+    @State private var navigateToList = false
+    
+    @ObservedObject var viewModel = RestaurantViewModel()
     @FocusState private var focusedField: Int?
     
     var body: some View {
@@ -52,11 +55,15 @@ struct CodeCheckinView: View {
             .padding(.horizontal)
             .padding(.top, 20)
             
-            Button("Register") {
+            Button("Checkin") {
                 let fullCode = code.joined()
-                viewModel.findAndRegisterRestaurant(phoneNumber: phoneNumber, code: fullCode) { success, message in
+                viewModel.checkin(code: fullCode, phoneNumber: phoneNumber, restaurant: restaurant) { success, message, completed in
                     if success {
-                        onCompletion()
+                        if completed {
+                            navigateToList = true
+                        } else {
+                            onCompletion()
+                        }
                     } else {
                         code = Array(repeating: "", count: 4)
                         showingError = true
@@ -75,5 +82,8 @@ struct CodeCheckinView: View {
         .alert(isPresented: $showingError) {
             Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
         }
+        NavigationLink(destination: UseRewardView(restaurant: restaurant, phoneNumber: phoneNumber), isActive: $navigateToList) {
+            EmptyView()
+        }.hidden()
     }
 }

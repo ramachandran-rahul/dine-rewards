@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 struct RegisteredRestaurant: Identifiable, Codable {
-    var id: String
+    @DocumentID var id: String?
     var title: String
     var image: String
     var targetCheckins: Int

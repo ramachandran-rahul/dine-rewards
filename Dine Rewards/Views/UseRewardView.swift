@@ -9,9 +9,10 @@ import SwiftUI
 
 struct UseRewardView: View {
     var restaurant: Restaurant
+    var phoneNumber: String
+
     @EnvironmentObject var viewModel: RestaurantViewModel
         @Environment(\.presentationMode) var presentationMode
-    var phoneNumber: String
 
     var body: some View {
         Image("sample-qr-code")
@@ -20,7 +21,7 @@ struct UseRewardView: View {
             .frame(width: 200, height: 200)
         Spacer()
         Button("Use Reward") {
-            viewModel.deleteData(restaurantId: restaurant.id, phone: phoneNumber)
+            viewModel.deleteData(restaurantId: restaurant.id!, phone: phoneNumber)
         }
         .padding()
         .background(Color.blue)

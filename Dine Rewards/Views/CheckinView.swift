@@ -62,9 +62,9 @@ struct CheckinView: View {
             .padding(.horizontal)
         }
         .background(Color.gray.opacity(0.1))
-        .sheet(isPresented: $showCodeRestaurant) {
+        .sheet(isPresented: $showCodeCheckin) {
             CodeCheckinView(restaurant: restaurant, phoneNumber: phoneNumber, onCompletion: {
-                showCodeRestaurant = false
+                showCodeCheckin = false
             })
         }
     }

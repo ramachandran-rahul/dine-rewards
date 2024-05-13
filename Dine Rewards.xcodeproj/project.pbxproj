@@ -23,7 +23,6 @@
 		A269CF9E2BF1CD32009D2C5C /* RegisteredRestaurantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A269CF9D2BF1CD32009D2C5C /* RegisteredRestaurantViewModel.swift */; };
 		A2DB80CD2BF0A36700D0E76F /* UseRewardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DB80C82BF0A36700D0E76F /* UseRewardView.swift */; };
 		A2DB80CE2BF0A36700D0E76F /* CheckinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DB80C92BF0A36700D0E76F /* CheckinView.swift */; };
-		A2DB80CF2BF0A36700D0E76F /* CheckinScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DB80CA2BF0A36700D0E76F /* CheckinScannerView.swift */; };
 		A2DB80D02BF0A36700D0E76F /* ListRestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DB80CB2BF0A36700D0E76F /* ListRestaurantView.swift */; };
 		A2DB80D42BF0A37200D0E76F /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DB80D12BF0A37200D0E76F /* Restaurant.swift */; };
 		A2DB80D52BF0A37200D0E76F /* RestaurantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DB80D22BF0A37200D0E76F /* RestaurantViewModel.swift */; };
@@ -94,7 +93,6 @@
 		A269CF9D2BF1CD32009D2C5C /* RegisteredRestaurantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteredRestaurantViewModel.swift; sourceTree = "<group>"; };
 		A2DB80C82BF0A36700D0E76F /* UseRewardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseRewardView.swift; sourceTree = "<group>"; };
 		A2DB80C92BF0A36700D0E76F /* CheckinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckinView.swift; sourceTree = "<group>"; };
-		A2DB80CA2BF0A36700D0E76F /* CheckinScannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckinScannerView.swift; sourceTree = "<group>"; };
 		A2DB80CB2BF0A36700D0E76F /* ListRestaurantView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListRestaurantView.swift; sourceTree = "<group>"; };
 		A2DB80D12BF0A37200D0E76F /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
 		A2DB80D22BF0A37200D0E76F /* RestaurantViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantViewModel.swift; sourceTree = "<group>"; };
@@ -160,7 +158,6 @@
 		3644B6472BECE6B50000044A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				A2DB80CA2BF0A36700D0E76F /* CheckinScannerView.swift */,
 				A2DB80C92BF0A36700D0E76F /* CheckinView.swift */,
 				A2DB80CB2BF0A36700D0E76F /* ListRestaurantView.swift */,
 				A2DB80C82BF0A36700D0E76F /* UseRewardView.swift */,
@@ -426,7 +423,6 @@
 				A269CF982BF1CA25009D2C5C /* CodeCheckinView.swift in Sources */,
 				B37AB4D82BEE4883005CE6BC /* auth.swift in Sources */,
 				A2DB80CE2BF0A36700D0E76F /* CheckinView.swift in Sources */,
-				A2DB80CF2BF0A36700D0E76F /* CheckinScannerView.swift in Sources */,
 				A269CF9E2BF1CD32009D2C5C /* RegisteredRestaurantViewModel.swift in Sources */,
 				A269CF9A2BF1CAD1009D2C5C /* CodeRestaurantView.swift in Sources */,
 				A269CF9C2BF1CC52009D2C5C /* RegisteredRestaurant.swift in Sources */,

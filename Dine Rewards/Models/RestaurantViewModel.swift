@@ -73,49 +73,58 @@ class RestaurantViewModel: ObservableObject {
        }
    }
     
-    func updateCheckin(restaurantId: String, phone: String) {
-            let query = db.collection("restaurant")
-                .whereField("id", isEqualTo: restaurantId)
-                .whereField("phone", isEqualTo: phone)
-            
-            query.getDocuments { snapshot, error in
-                guard let document = snapshot?.documents.first else {
-                    print("No document found or error: \(error?.localizedDescription ?? "Unknown error")")
-                    return
-                }
-
-                let transactionBlock: (Transaction, NSErrorPointer) -> Any? = { transaction, errorPointer in
-                    let restaurantDocument: DocumentSnapshot
-                    do {
-                        restaurantDocument = try transaction.getDocument(document.reference)
-                    } catch let fetchError as NSError {
-                        errorPointer?.pointee = fetchError
-                        return nil
-                    }
-                    
-                    guard let currentCheckins = restaurantDocument.data()?["currentCheckins"] as? Int else {
-                        let error = NSError(domain: "AppErrorDomain", code: -1, userInfo: [
-                            NSLocalizedDescriptionKey: "Unable to retrieve current check-ins from document."
-                        ])
-                        errorPointer?.pointee = error
-                        return nil
-                    }
-                    
-                    transaction.updateData(["currentCheckins": currentCheckins + 1, "lastCheckin": Date()], forDocument: document.reference)
-                    return nil
-                }
-
-                self.db.runTransaction(transactionBlock) { object, error in
-                    if let error = error {
-                        print("Transaction failed: \(error)")
-                    } else {
-                        print("Transaction successfully committed!")
-                        self.fetchData(phone: phone)
-                    }
-                }
-            }
+    func checkin(code: String, phoneNumber: String, restaurant: Restaurant, completion: @escaping (Bool, String, Bool) -> Void) {
+        // Step 1: Check the current check-ins and target check-ins
+        guard restaurant.currentCheckins < restaurant.targetCheckins else {
+            completion(false, "No matching restaurant or maximum check-ins reached.", false)
+            return
         }
 
-            
+        // Step 2: Validate the check-in code
+        db.collection("registered-restaurant").document(restaurant.registeredId).getDocument { documentSnapshot, error in
+            guard let document = documentSnapshot, document.exists, error == nil else {
+                completion(false, "No registered restaurant found.", false)
+                return
+            }
+
+            let registeredRestaurant = try? document.data(as: RegisteredRestaurant.self)
+            guard let checkinCode = registeredRestaurant?.checkinCode, checkinCode == code else {
+                completion(false, "Check-in code is not correct.", false)
+                return
+            }
+
+            // Step 3: Update the restaurant check-in count and status
+            self.updateCheckinCountAndStatus(restaurant: restaurant, completion: completion)
+        }
+    }
+
+    private func updateCheckinCountAndStatus(restaurant: Restaurant, completion: @escaping (Bool, String, Bool) -> Void) {
+        let restaurantRef = db.collection("restaurant").document(restaurant.id!)
+        db.runTransaction({ (transaction, errorPointer) -> Any? in
+            let restaurantDocument: DocumentSnapshot
+            do {
+                restaurantDocument = try transaction.getDocument(restaurantRef)
+            } catch let fetchError as NSError {
+                errorPointer?.pointee = fetchError
+                return nil
+            }
+
+            var newCheckins = restaurant.currentCheckins + 1
+            var newStatus = restaurant.status
+            if newCheckins >= restaurant.targetCheckins {
+                newStatus = "COMPLETED"
+            }
+
+            transaction.updateData(["currentCheckins": newCheckins, "status": newStatus], forDocument: restaurantRef)
+            completion(true, "Check-in successful and completed.", true)
+            return nil
+        }) { _, error in
+            if let error = error {
+                completion(false, "Failed to update restaurant: \(error.localizedDescription)", false)
+            } else {
+                completion(true, "Check-in successful.", false)
+            }
+        }
+    }
 }
 
