@@ -16,82 +16,85 @@ struct CheckinView: View {
     @State private var navigateToList = false
     
     var body: some View {
-        VStack {
-            // Header
+        NavigationView {
             VStack {
-                AsyncImage(url: URL(string: restaurant.image)) { image in
-                    image.resizable()
-                } placeholder: {
-                    ProgressView()
-                }
-                .frame(width: 150, height: 150)
-                .cornerRadius(75)
-                .padding(.bottom)
-                Text(restaurant.title)
-                    .font(.title)
-                    .bold()
-                    .foregroundColor(.white)
-            }
-            .frame(maxWidth: .infinity)
-            .padding(.bottom, 40)
-            .padding(.top, 20)
-            .background(Color.black.opacity(0.8))
-            
-            
-            // Milestone rewards
-            VStack {
-                ScrollView {
-                    Text("Grab a Bite.")
-                        .font(.title3)
-                        .foregroundStyle(Color.white)
-                        .bold()
-                        .padding(.bottom, 5)
-                    Text("Grab your Rewards!")
-                        .font(.title2)
-                        .foregroundStyle(Color.white)
-                        .bold()
-                        .padding(.bottom)
-                    ForEach(0..<restaurant.targetCheckins, id: \.self) { index in
-                        ProgressBarView(
-                            index: index,
-                            current: restaurant.currentCheckins,
-                            total: restaurant.targetCheckins
-                        )
+                // Header
+                VStack {
+                    AsyncImage(url: URL(string: restaurant.image)) { image in
+                        image.resizable()
+                    } placeholder: {
+                        ProgressView()
                     }
-                    
-                    Text(restaurant.reward + (restaurant.currentCheckins == restaurant.targetCheckins ? " - Unlocked ✅" : ""))
-                        .font(.title2)
+                    .frame(width: 150, height: 150)
+                    .cornerRadius(75)
+                    .padding(.bottom)
+                    Text(restaurant.title)
+                        .font(.title)
                         .bold()
                         .foregroundColor(.white)
-                        .padding(.top, 5)
-                        .buttonStyle(.borderedProminent)
-                    
                 }
-                .padding()
-                
-                Spacer()
-                Button("Check-In") {
-                    showCodeCheckin = true
-                }
-                .font(.headline)
                 .frame(maxWidth: .infinity)
-                .padding()
-                .foregroundColor(.white)
-                .background(Color.red)
-                .cornerRadius(10)
-            }
-            .padding()
-            .background(Color.black)
-        }
-        .sheet(isPresented: $showCodeCheckin) {
-            CodeCheckinView(restaurant: restaurant, phoneNumber: phoneNumber, onCompletion: { isNavigate in
-                showCodeCheckin = false
-                if (isNavigate) {
-                    navigateToList = true
+                .padding(.bottom, 40)
+                .padding(.top, 20)
+                .background(Color.black.opacity(0.8))
+                
+                
+                // Milestone rewards
+                VStack {
+                    ScrollView {
+                        Text("Grab a Bite.")
+                            .font(.title3)
+                            .foregroundStyle(Color.white)
+                            .bold()
+                            .padding(.bottom, 5)
+                        Text("Grab your Rewards!")
+                            .font(.title2)
+                            .foregroundStyle(Color.white)
+                            .bold()
+                            .padding(.bottom)
+                        ForEach(0..<restaurant.targetCheckins, id: \.self) { index in
+                            ProgressBarView(
+                                index: index,
+                                current: restaurant.currentCheckins,
+                                total: restaurant.targetCheckins
+                            )
+                        }
+                        
+                        Text(restaurant.reward + (restaurant.currentCheckins == restaurant.targetCheckins ? " - Unlocked ✅" : ""))
+                            .font(.title2)
+                            .bold()
+                            .foregroundColor(.white)
+                            .padding(.top, 5)
+                            .buttonStyle(.borderedProminent)
+                        
+                    }
+                    .padding()
+                    
+                    Spacer()
+                    Button("Check-In") {
+                        showCodeCheckin = true
+                    }
+                    .font(.headline)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(Color.red)
+                    .cornerRadius(10)
                 }
-            })
-        }
-        NavigationLink("", destination:  ListRestaurantView(phoneNumber: phoneNumber), isActive: $navigateToList)
+                .padding()
+                .background(Color.black)
+            }
+            .sheet(isPresented: $showCodeCheckin) {
+                CodeCheckinView(restaurant: restaurant, phoneNumber: phoneNumber, onCompletion: { isNavigate in
+                    showCodeCheckin = false
+                    if (isNavigate) {
+                        navigateToList = true
+                    }
+                })
+            }
+            NavigationLink("", destination:  ListRestaurantView(phoneNumber: phoneNumber), isActive: $navigateToList).background(Color.black)
+        }.background(Color.black)
+        
     }
 }
 struct ProgressBarView: View {
