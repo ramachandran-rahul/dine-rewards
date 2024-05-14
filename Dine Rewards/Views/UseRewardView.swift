@@ -50,8 +50,6 @@ struct UseRewardView: View {
                 Spacer()
             }.background(Color.black)
             NavigationLink("", destination:  ListRestaurantView(phoneNumber: phoneNumber), isActive: $showRestaurantView).background(Color.black).frame(width: 200, height: 0)
-        
-        
     }
 }
 
