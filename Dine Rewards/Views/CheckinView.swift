@@ -14,56 +14,75 @@ struct CheckinView: View {
     
     @State private var showCodeCheckin = false
     @State private var navigateToList = false
-
+    
     var body: some View {
-        ScrollView {
-            VStack(spacing: 20) {
-                // Header
-                VStack {
-                    AsyncImage(url: URL(string: restaurant.image)) { image in
-                        image.resizable()
-                    } placeholder: {
-                        ProgressView()
-                    }
-                    .frame(width: 50, height: 50)
-                    .cornerRadius(8)
-                    Text(restaurant.title)
-                        .font(.title2)
-                        .foregroundColor(.black)
+        VStack {
+            // Header
+            VStack {
+                AsyncImage(url: URL(string: restaurant.image)) { image in
+                    image.resizable()
+                } placeholder: {
+                    ProgressView()
                 }
-                .padding()
-                .background(Color.white.opacity(0.9))
-
-                // Milestone rewards
-                VStack(alignment: .leading, spacing: 10) {
-                    Text("Next Milestone Reward")
-                        .font(.headline)
+                .frame(width: 150, height: 150)
+                .cornerRadius(75)
+                .padding(.bottom)
+                Text(restaurant.title)
+                    .font(.title)
+                    .bold()
+                    .foregroundColor(.white)
+            }
+            .frame(maxWidth: .infinity)
+            .padding(.bottom, 40)
+            .padding(.top, 20)
+            .background(Color.black.opacity(0.8))
+            
+            
+            // Milestone rewards
+            VStack {
+                ScrollView {
+                    Text("Grab a Bite.")
+                        .font(.title3)
+                        .foregroundStyle(Color.white)
                         .bold()
+                        .padding(.bottom, 5)
+                    Text("Grab your Rewards!")
+                        .font(.title2)
+                        .foregroundStyle(Color.white)
+                        .bold()
+                        .padding(.bottom)
                     ForEach(0..<restaurant.targetCheckins, id: \.self) { index in
-                        MilestoneView(
-                            number: "\(index + 1) Check-in",
-                            isCompleted: index < restaurant.currentCheckins
+                        ProgressBarView(
+                            index: index,
+                            current: restaurant.currentCheckins,
+                            total: restaurant.targetCheckins
                         )
                     }
                     
-                    Text(restaurant.reward).font(.headline)
+                    Text(restaurant.reward + (restaurant.currentCheckins == restaurant.targetCheckins ? " - Unlocked ✅" : ""))
+                        .font(.title2)
+                        .bold()
+                        .foregroundColor(.white)
+                        .padding(.top, 5)
+                        .buttonStyle(.borderedProminent)
                     
-                    .buttonStyle(.borderedProminent)
                 }
                 .padding()
-                .background(Color.white)
-
-                Button("Check-in") {
-                      showCodeCheckin = true
-                  }
-                  .padding()
-                  .foregroundColor(.white)
-                  .background(Color.red)
-                  .cornerRadius(10)
+                
+                Spacer()
+                Button("Check-In") {
+                    showCodeCheckin = true
+                }
+                .font(.headline)
+                .frame(maxWidth: .infinity)
+                .padding()
+                .foregroundColor(.white)
+                .background(Color.red)
+                .cornerRadius(10)
             }
-            .padding(.horizontal)
+            .padding()
+            .background(Color.black)
         }
-        .background(Color.gray.opacity(0.1))
         .sheet(isPresented: $showCodeCheckin) {
             CodeCheckinView(restaurant: restaurant, phoneNumber: phoneNumber, onCompletion: { isNavigate in
                 showCodeCheckin = false
@@ -75,29 +94,21 @@ struct CheckinView: View {
         NavigationLink("", destination:  ListRestaurantView(phoneNumber: phoneNumber), isActive: $navigateToList)
     }
 }
-
-struct MilestoneView: View {
-    var number: String
-    var isCompleted: Bool
-
+struct ProgressBarView: View {
+    var index: Int
+    var current: Int
+    var total: Int
+    
     var body: some View {
-        HStack {
-            if isCompleted {
-                ZStack {
-                    Circle()
-                        .fill(Color.green)
-                        .frame(width: 20, height: 20)
-                    Image(systemName: "checkmark")
-                        .foregroundColor(.white)
-                        .font(.caption)
-                }
-            } else {
-                Circle()
-                    .stroke(lineWidth: 2)
-                    .frame(width: 20, height: 20)
-            }
-            VStack(alignment: .leading) {
-                Text(number)
+        VStack {
+            HStack {
+                Rectangle()
+                    .fill(index < current ? Color.green : Color.gray.opacity(0.5))
+                    .frame(width: 10, height: CGFloat(200 / total))
+                Text("Check-in: \(index + 1)")
+                    .foregroundStyle(Color.white)
+                    .bold()
+                    .padding(.leading, 20)
             }
         }
     }
@@ -107,7 +118,7 @@ struct CheckinView_Previews: PreviewProvider {
     static var previews: some View {
         CheckinView(restaurant: sampleRestaurant, phoneNumber: "+61 4444444444")
     }
-
+    
     static var sampleRestaurant: Restaurant {
         Restaurant(
             id: "1",
