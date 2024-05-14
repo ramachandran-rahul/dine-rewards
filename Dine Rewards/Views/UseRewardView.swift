@@ -28,7 +28,7 @@ struct UseRewardView: View {
                 .foregroundStyle(Color.white)
             VStack(spacing: 20) {
                 Text("Please show the restaurant staff the QR code below to redeem your reward and then click on the Use Reward button.")
-                    .padding()u
+                    .padding()
                     .multilineTextAlignment(.center)
                     .foregroundStyle(Color.white)
                 Image("sample-qr-code")
