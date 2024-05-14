@@ -13,6 +13,8 @@ struct LoginOTPEntryView: View {
     @State private var otp: [String] = Array(repeating: "", count: 6)
     @State private var shouldNavigate: Bool = false
     @FocusState private var focusedField: Int?
+    @State private var canResendOtp: Bool = false
+    @State private var remainingTime: Int = 60
     
     let otpFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -121,6 +123,33 @@ struct LoginOTPEntryView: View {
             .padding(.horizontal)
             .padding(.top, 20)
             
+            //resend OTP Button
+            Button(action: {
+                // Action for the button
+                Auth.shared.startAuth(phoneNumber: phoneNumber, resendOtp: true){ success in
+                    guard success else {return}
+                    DispatchQueue.main.async {
+
+                        canResendOtp = false
+                        startTimer()
+                        //debug
+                        print("succesfully resent OTP")
+                        
+                        // TODO: handle what happens once otp verification is successful
+                    }
+                }
+            }) {
+                Text(formattedResendOtp())
+                    .foregroundColor(.red)
+                    .underline()
+                    .padding()
+                    .background(.clear)
+                    .cornerRadius(10)
+            }
+            .padding(.horizontal)
+            .padding(.top, 10)
+            .disabled(!canResendOtp)
+            
             // Continue button
             Button(action: {
                 // Action for the button
@@ -150,6 +179,27 @@ struct LoginOTPEntryView: View {
         }
         .background(Color.black)
         .navigationBarHidden(true)
+        .onAppear{
+            startTimer()
+        }
+    }
+    
+    func startTimer() {
+        remainingTime = 60
+        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+            // Enable the button after 1 minute
+            if remainingTime > 0 {
+                remainingTime -= 1
+            } else {
+                // Enable the button after 1 minute
+                canResendOtp = true
+                timer.invalidate() // Stop the timer when enabled
+            }
+        }
+    }
+    
+    func formattedResendOtp() -> String {
+        return remainingTime == 0 ? "Resend OTP" : "Resend OTP in \(remainingTime)"
     }
 }
 

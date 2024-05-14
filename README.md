@@ -56,7 +56,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 Contact
 -------
 
-For any queries or feedback, please reach out to <ramachandran.k.rahul@gmail.com>, <riyanpahuja4@gmail.com> or <batoan.nguyen-1@student.uts.edu.au>.
+For any queries or feedback, please reach out to <ramachandran.k.rahul@gmail.com>, <riyanpahuja4@gmail.com> or <joker7nbt@gmail.com>.
 
 Acknowledgements
 ----------------

@@ -18,11 +18,13 @@ class Auth {
     
     private var verificationId: String?
     
-    public func startAuth(phoneNumber: String, completion: @escaping (Bool) -> Void) {
-        if let savedValue = UserDefaults.standard.string(forKey: verificationIdKey) {
-            self.verificationId = savedValue
-            completion(true)
-            return
+    public func startAuth(phoneNumber: String, resendOtp: Bool = false, completion: @escaping (Bool) -> Void) {
+        if(!resendOtp){
+            if let savedValue = UserDefaults.standard.string(forKey: verificationIdKey) {
+                self.verificationId = savedValue
+                completion(true)
+                return
+            }
         }
     
         PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationId, error in
