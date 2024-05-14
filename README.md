@@ -11,7 +11,7 @@ Features
 
 -   Unified Account Management: Easily add and manage multiple loyalty cards from various restaurants.
 -   Real-Time Updates: Receive immediate updates on rewards progress directly within the app.
--   Check In: Quickly check in to your favourite restaurants by simply scanning a QR Code. 
+-   Check In: Quickly check in to your favourite restaurants by simply entering a code. 
 -   Secure Login: Protect your information with robust security measures, ensuring data privacy and integrity.
 -   User-Friendly Interface: Navigate through the app with an intuitive and clean interface designed specifically for iOS.
 
@@ -56,7 +56,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 Contact
 -------
 
-For any queries or feedback, please reach out to <ramachandran.k.rahul@gmail.com>, <riyanpahuja4@gmail.com> or <batoan.nguyen-1@student.uts.edu.au>.
+For any queries or feedback, please reach out to <ramachandran.k.rahul@gmail.com>, <riyanpahuja4@gmail.com> or <joker7nbt@gmail.com>.
 
 Acknowledgements
 ----------------
