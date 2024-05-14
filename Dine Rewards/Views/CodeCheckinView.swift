@@ -22,7 +22,16 @@ struct CodeCheckinView: View {
     
     var body: some View {
         VStack {
-            Text("Enter checkin code")
+            Spacer()
+            Text("It's great to have you back!")
+                .font(.title2)
+                .bold()
+                .padding(.bottom, 10)
+                .foregroundStyle(Color.white)
+            Text("Please enter the check-in code on your receipt or ask your lovely waiter for today!")
+                .foregroundStyle(Color.white)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal)
             HStack(spacing: 10) {
                 ForEach(0..<4, id: \.self) { index in
                     TextField("", text: $code[index])
@@ -55,7 +64,7 @@ struct CodeCheckinView: View {
             .padding(.horizontal)
             .padding(.top, 20)
             
-            Button("Checkin") {
+            Button("Check-In") {
                 let fullCode = code.joined()
                 viewModel.checkin(code: fullCode, phoneNumber: phoneNumber, restaurant: restaurant) { success, message, completed in
                     if success {
@@ -73,12 +82,14 @@ struct CodeCheckinView: View {
             }
             .frame(maxWidth: .infinity)
             .padding()
-            .background(Color.blue)
+            .background(Color.red)
             .foregroundColor(.white)
             .cornerRadius(10)
             .padding(.horizontal)
             .padding(.top, 20)
+            Spacer()
         }
+        .background(Color.black)
         .alert(isPresented: $showingError) {
             Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
         }

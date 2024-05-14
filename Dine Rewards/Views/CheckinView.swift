@@ -69,7 +69,7 @@ struct CheckinView: View {
                 .padding()
                 
                 Spacer()
-                Button("Check-in") {
+                Button("Check-In") {
                     showCodeCheckin = true
                 }
                 .font(.headline)
