@@ -16,7 +16,6 @@ struct CheckinView: View {
     @State private var navigateToList = false
     
     var body: some View {
-        NavigationView {
             VStack {
                 // Header
                 VStack {
@@ -91,10 +90,8 @@ struct CheckinView: View {
                         navigateToList = true
                     }
                 })
-            }
-            NavigationLink("", destination:  ListRestaurantView(phoneNumber: phoneNumber), isActive: $navigateToList).background(Color.black)
-        }.background(Color.black)
-        
+            }.background(Color.black)
+            NavigationLink("", destination:  ListRestaurantView(phoneNumber: phoneNumber), isActive: $navigateToList).background(Color.black).frame(width: 200, height: 0)
     }
 }
 struct ProgressBarView: View {

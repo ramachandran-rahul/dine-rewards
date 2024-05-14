@@ -16,7 +16,6 @@ struct UseRewardView: View {
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
-        NavigationView {
             VStack(spacing: 10) {
                 Spacer()
                 Text("Congratulations!")
@@ -50,9 +49,9 @@ struct UseRewardView: View {
                 }
                 Spacer()
             }.background(Color.black)
-            NavigationLink("", destination:  ListRestaurantView(phoneNumber: phoneNumber), isActive: $showRestaurantView)
-        }
-        .background(Color.black)
+            NavigationLink("", destination:  ListRestaurantView(phoneNumber: phoneNumber), isActive: $showRestaurantView).background(Color.black).frame(width: 200, height: 0)
+        
+        
     }
 }
 
