@@ -60,15 +60,13 @@ class RestaurantViewModel: ObservableObject {
         }
     }
     
-    func deleteData(restaurantId: String, phone: String) {
+    func deleteData(restaurantId: String, phone: String, completion: @escaping () -> Void) {
        db.collection("restaurant").document(restaurantId).delete() { error in
            if let error = error {
                print("Error removing document: \(error)")
            } else {
                print("Document successfully removed!")
-               DispatchQueue.main.async {
-                   self.fetchData(phone: phone)
-               }
+               completion()
            }
        }
    }
@@ -116,7 +114,7 @@ class RestaurantViewModel: ObservableObject {
             }
 
             transaction.updateData(["currentCheckins": newCheckins, "status": newStatus], forDocument: restaurantRef)
-            completion(true, "Check-in successful and completed.", true)
+            completion(true, "Check-in successful and completed.", newStatus == "COMPLETED")
             return nil
         }) { _, error in
             if let error = error {

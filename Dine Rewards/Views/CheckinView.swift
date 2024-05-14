@@ -11,7 +11,9 @@ import AVFoundation
 struct CheckinView: View {
     var restaurant: Restaurant
     var phoneNumber: String
+    
     @State private var showCodeCheckin = false
+    @State private var navigateToList = false
 
     var body: some View {
         ScrollView {
@@ -63,10 +65,14 @@ struct CheckinView: View {
         }
         .background(Color.gray.opacity(0.1))
         .sheet(isPresented: $showCodeCheckin) {
-            CodeCheckinView(restaurant: restaurant, phoneNumber: phoneNumber, onCompletion: {
+            CodeCheckinView(restaurant: restaurant, phoneNumber: phoneNumber, onCompletion: { isNavigate in
                 showCodeCheckin = false
+                if (isNavigate) {
+                    navigateToList = true
+                }
             })
         }
+        NavigationLink("", destination:  ListRestaurantView(phoneNumber: phoneNumber), isActive: $navigateToList)
     }
 }
 

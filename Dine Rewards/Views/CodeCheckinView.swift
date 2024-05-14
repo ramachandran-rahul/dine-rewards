@@ -10,12 +10,11 @@ import SwiftUI
 struct CodeCheckinView: View {
     var restaurant: Restaurant
     var phoneNumber: String
-    var onCompletion: () -> Void
+    var onCompletion: (Bool) -> Void
     
     @State private var code: [String] = Array(repeating: "", count: 4)
     @State private var showingError = false
     @State private var errorMessage = ""
-    @State private var navigateToList = false
     
     @ObservedObject var viewModel = RestaurantViewModel()
     @FocusState private var focusedField: Int?
@@ -57,13 +56,9 @@ struct CodeCheckinView: View {
             
             Button("Checkin") {
                 let fullCode = code.joined()
-                viewModel.checkin(code: fullCode, phoneNumber: phoneNumber, restaurant: restaurant) { success, message, completed in
+                viewModel.checkin(code: fullCode, phoneNumber: phoneNumber, restaurant: restaurant) { success, message, isNavigate in
                     if success {
-                        if completed {
-                            navigateToList = true
-                        } else {
-                            onCompletion()
-                        }
+                        onCompletion(isNavigate)
                     } else {
                         code = Array(repeating: "", count: 4)
                         showingError = true
@@ -82,15 +77,13 @@ struct CodeCheckinView: View {
         .alert(isPresented: $showingError) {
             Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
         }
-        NavigationLink(destination: UseRewardView(restaurant: restaurant, phoneNumber: phoneNumber), isActive: $navigateToList) {
-            EmptyView()
-        }.hidden()
     }
 }
 
 struct CodeCheckinView_Previews: PreviewProvider {
     static var previews: some View {
-        CodeCheckinView(restaurant: sampleRestaurant, phoneNumber: "+61 4444444444", onCompletion: {})
+        CodeCheckinView(restaurant: sampleRestaurant, phoneNumber: "+61 4444444444", onCompletion: { isNavigate in
+        })
     }
 
     static var sampleRestaurant: Restaurant {
