@@ -143,6 +143,9 @@ struct ListRestaurantView: View {
                     }
                     .foregroundStyle(Color.white)
                     Spacer()
+                    Image(systemName: restaurant.status == "COMPLETED" ? "checkmark.circle" : "chevron.right")
+                        .foregroundStyle(Color.white)
+                        .font(.title2)
                 }
                 .padding(.horizontal)
                 .padding(.vertical, 10)
