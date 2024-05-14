@@ -18,7 +18,16 @@ struct CodeRestaurantView: View {
     
     var body: some View {
         VStack {
-            Text("Enter the code which you got from restaurant")
+            Spacer()
+            Text("More the cards, more the rewards!")
+                .font(.title2)
+                .bold()
+                .padding(.bottom, 10)
+                .foregroundStyle(Color.white)
+            Text("Please enter the restaurant code near the entrace or ask your lovely waiter for today!")
+                .foregroundStyle(Color.white)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal)
             HStack(spacing: 10) {
                 ForEach(0..<4, id: \.self) { index in
                     TextField("", text: $code[index])
@@ -51,7 +60,7 @@ struct CodeRestaurantView: View {
             .padding(.horizontal)
             .padding(.top, 20)
             
-            Button("Register") {
+            Button("Register Your Rewards Card") {
                 let fullCode = code.joined()
                 viewModel.findAndRegisterRestaurant(phoneNumber: phoneNumber, code: fullCode) { success, message in
                     if success {
@@ -65,12 +74,14 @@ struct CodeRestaurantView: View {
             }
             .frame(maxWidth: .infinity)
             .padding()
-            .background(Color.blue)
+            .background(Color.red)
             .foregroundColor(.white)
             .cornerRadius(10)
             .padding(.horizontal)
             .padding(.top, 20)
+            Spacer()
         }
+        .background(Color.black)
         .alert(isPresented: $showingError) {
             Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
         }
