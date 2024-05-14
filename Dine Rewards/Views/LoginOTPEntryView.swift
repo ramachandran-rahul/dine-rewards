@@ -157,10 +157,7 @@ struct LoginOTPEntryView: View {
                     guard success else {return}
                     DispatchQueue.main.async {
                         shouldNavigate.toggle()
-                        //debug
                         print("succesfully verified OTP")
-                        
-                        // TODO: handle what happens once otp verification is successful
                     }
                 }
             }) {
@@ -173,7 +170,10 @@ struct LoginOTPEntryView: View {
             }
             .disabled(otp.joined().count < 6)
             .padding(.horizontal)
-            .padding(.top, 5)
+            .padding(.top, 20)
+            .navigationDestination(isPresented: $shouldNavigate) {
+                ListRestaurantView(phoneNumber: phoneNumber)
+            }
             
             Spacer()
         }

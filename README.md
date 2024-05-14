@@ -11,7 +11,7 @@ Features
 
 -   Unified Account Management: Easily add and manage multiple loyalty cards from various restaurants.
 -   Real-Time Updates: Receive immediate updates on rewards progress directly within the app.
--   Check In: Quickly check in to your favourite restaurants by simply entering a code. 
+-   Check In: Quickly check in to your favourite restaurants by simply key in the code provided by restaurants. 
 -   Secure Login: Protect your information with robust security measures, ensuring data privacy and integrity.
 -   User-Friendly Interface: Navigate through the app with an intuitive and clean interface designed specifically for iOS.
 
