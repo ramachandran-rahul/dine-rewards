@@ -16,21 +16,41 @@ struct UseRewardView: View {
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
-        Image("sample-qr-code")
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 200, height: 200)
-        Spacer()
-        Button("Use Reward") {
-            viewModel.deleteData(restaurantId: restaurant.id!, phone: phoneNumber, completion: {
-                showRestaurantView = true
-            })
+        VStack(spacing: 10) {
+            Spacer()
+            Text("Congratulations!")
+                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                .bold()
+                .foregroundStyle(Color.white)
+            Text("Here's your Reward!")
+                .font(.title2)
+                .bold()
+                .foregroundStyle(Color.white)
+            VStack(spacing: 20) {
+                Text("Please show the restaurant staff the QR code below to redeem your reward and then click on the Use Reward button.")
+                    .padding()u
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(Color.white)
+                Image("sample-qr-code")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 200, height: 200)
+                    .padding(.bottom, 20)
+                
+                Button("Use Reward") {
+                    viewModel.deleteData(restaurantId: restaurant.id!, phone: phoneNumber, completion: {
+                        showRestaurantView = true
+                    })
+                }
+                .padding()
+                .background(Color.red)
+                .foregroundColor(.white)
+                .cornerRadius(10)
+                NavigationLink("", destination:  ListRestaurantView(phoneNumber: phoneNumber), isActive: $showRestaurantView)
+            }
+            Spacer()
         }
-        .padding()
-        .background(Color.blue)
-        .foregroundColor(.white)
-        .cornerRadius(10)
-        NavigationLink("", destination:  ListRestaurantView(phoneNumber: phoneNumber), isActive: $showRestaurantView)
+        .background(Color.black)
     }
 }
 
