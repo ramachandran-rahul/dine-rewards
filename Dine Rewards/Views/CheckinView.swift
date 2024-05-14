@@ -95,10 +95,9 @@ struct CheckinView: View {
                 }
             })
         }.background(Color.black)
-            .navigationDestination(isPresented: $navigateToList) {
-                ListRestaurantView(phoneNumber: phoneNumber)
-            }
-//        NavigationLink("", destination:  ListRestaurantView(phoneNumber: phoneNumber), isActive: $navigateToList).background(Color.black).frame(width: 200, height: 0)
+        .navigationDestination(isPresented: $navigateToList) {
+            ListRestaurantView(phoneNumber: phoneNumber)
+        }
     }
 }
 struct ProgressBarView: View {
