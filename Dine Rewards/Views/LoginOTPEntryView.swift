@@ -15,6 +15,7 @@ struct LoginOTPEntryView: View {
     @FocusState private var focusedField: Int?
     @State private var canResendOtp: Bool = false
     @State private var remainingTime: Int = 60
+    @State private var timer: Timer?
     
     let otpFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -131,7 +132,7 @@ struct LoginOTPEntryView: View {
                     DispatchQueue.main.async {
 
                         canResendOtp = false
-                        startTimer()
+                        timer = startTimer()
                         //debug
                         print("succesfully resent OTP")
                         
@@ -180,13 +181,16 @@ struct LoginOTPEntryView: View {
         .background(Color.black)
         .navigationBarHidden(true)
         .onAppear{
-            startTimer()
+            timer = startTimer()
+        }
+        .onDisappear {
+            timer?.invalidate()
         }
     }
     
-    func startTimer() {
+    func startTimer() -> Timer? {
         remainingTime = 60
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+       return Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             // Enable the button after 1 minute
             if remainingTime > 0 {
                 remainingTime -= 1

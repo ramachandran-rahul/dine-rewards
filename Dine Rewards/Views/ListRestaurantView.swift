@@ -10,7 +10,7 @@ import AVFoundation
 
 struct ListRestaurantView: View {
     @State private var showCodeRestaurant = false
-    @ObservedObject var viewModel = RestaurantViewModel()
+    @StateObject var viewModel = RestaurantViewModel()
     var phoneNumber: String
     
     
