@@ -109,13 +109,9 @@ struct LoginView: View {
             .disabled(phoneNumber.count < 9)
             .padding(.horizontal)
             .padding(.top, 20)
-            .background(
-                NavigationLink(destination: LoginOTPEntryView(phoneNumber: $phoneNumber), isActive: $shouldNavigate) {
-                    EmptyView()
-                }
-                    .isDetailLink(false) // Prevents opening a new detail view on iPad
-            )
-            
+            .navigationDestination(isPresented: $shouldNavigate, destination: {
+                LoginOTPEntryView(phoneNumber: $phoneNumber)
+            })
             Spacer()
         }
         .background(Color.black)
