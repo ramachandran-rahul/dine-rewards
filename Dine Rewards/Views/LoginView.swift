@@ -1,18 +1,16 @@
-//
-//  LoginView.swift
-//  Dine Rewards
-//
-//  Created by Rahul Ramachandran on 10/05/24.
-//
-
 import Foundation
 import SwiftUI
 import iPhoneNumberField
 
+/// A view for logging in with a phone number.
 struct LoginView: View {
+    /// The entered phone number.
     @State private var phoneNumber: String = ""
+    /// Indicates whether to navigate to the next view.
     @State private var shouldNavigate: Bool = false
+    /// Indicates whether to show an error.
     @State private var showError: Bool = false
+    /// The focused state of the field.
     @FocusState private var focusedField: Bool
     
     var body: some View {
@@ -86,13 +84,11 @@ struct LoginView: View {
             // Continue button
             Button(action: {
                 focusedField = false
-                // Action for the button
                 AuthManager.shared.startAuth(phoneNumber: phoneNumber) { success in
                     DispatchQueue.main.async {
                         if success {
                             shouldNavigate.toggle()
-                            //debug
-                            print("Api call successful")
+                            print("API call successful")
                         } else {
                             showError = true
                         }

@@ -1,15 +1,13 @@
-//
-//  Dine_RewardsApp.swift
-//  Dine Rewards
-//
-//  Created by Rahul Ramachandran on 07/05/24.
-//
-
 import SwiftUI
 import FirebaseCore
 import FirebaseAuth
 
+// MARK: - AppDelegate
+
+/// The app delegate class for handling Firebase setup and lifecycle events.
 class AppDelegate: NSObject, UIApplicationDelegate {
+    
+    /// Handles the application's didFinishLaunchingWithOptions lifecycle event.
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         FirebaseApp.configure()
@@ -17,11 +15,13 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         return true
     }
     
+    /// Handles the registration for remote notifications with device token.
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         print("\(#function)")
         FirebaseAuth.Auth.auth().setAPNSToken(deviceToken, type: .sandbox)
     }
     
+    /// Handles the reception of remote notifications.
     func application(_ application: UIApplication, didReceiveRemoteNotification notification: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print("\(#function)")
         if FirebaseAuth.Auth.auth().canHandleNotification(notification) {
@@ -30,6 +30,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         }
     }
     
+    /// Handles the opening of URLs by the application.
     func application(_ application: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any]) -> Bool {
         print("\(#function)")
         if FirebaseAuth.Auth.auth().canHandle(url) {
@@ -39,9 +40,11 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     }
 }
 
+// MARK: - App
+
 @main
 struct Dine_RewardsApp: App {
-    // register app delegate for firebase setup
+    // Register app delegate for Firebase setup
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject var viewModel = RestaurantViewModel()
     

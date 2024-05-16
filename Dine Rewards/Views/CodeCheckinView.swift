@@ -1,22 +1,24 @@
-//
-//  CodeCheckinView.swift
-//  Dine Rewards
-//
-//  Created by Ba Toan Nguyen on 13/5/24.
-//
-
 import SwiftUI
 
+/// A view for entering the check-in code to check in to a restaurant.
 struct CodeCheckinView: View {
+    /// The restaurant to check in to.
     var restaurant: Restaurant
+    /// The phone number of the user.
     var phoneNumber: String
+    /// A closure to call upon completion.
     var onCompletion: (Bool) -> Void
     
+    /// The array to store the entered code digits.
     @State private var code: [String] = Array(repeating: "", count: 4)
+    /// Indicates whether to show an error alert.
     @State private var showingError = false
+    /// The error message to display.
     @State private var errorMessage = ""
     
+    /// The view model for restaurant-related operations.
     @ObservedObject var viewModel = RestaurantViewModel()
+    /// The focused field index.
     @FocusState private var focusedField: Int?
     
     var body: some View {

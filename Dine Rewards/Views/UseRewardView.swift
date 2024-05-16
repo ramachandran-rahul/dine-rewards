@@ -1,25 +1,24 @@
-//
-//  UseRewardView.swift
-//  Dine Rewards
-//
-//  Created by Ba Toan Nguyen on 12/5/24.
-//
-
 import SwiftUI
 
+/// A view for using a reward.
 struct UseRewardView: View {
+    /// The restaurant associated with the reward.
     var restaurant: Restaurant
+    /// The phone number of the user.
     var phoneNumber: String
+    /// Indicates whether to show the restaurant view.
     @State private var showRestaurantView = false
 
+    /// The view model for managing restaurant data.
     @EnvironmentObject var viewModel: RestaurantViewModel
+    /// The presentation mode environment.
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         VStack(spacing: 10) {
             Spacer()
             Text("Congratulations!")
-                .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
+                .font(.title)
                 .bold()
                 .foregroundStyle(Color.white)
             Text("Here's your Reward!")
