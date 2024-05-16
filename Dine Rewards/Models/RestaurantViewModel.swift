@@ -99,13 +99,6 @@ class RestaurantViewModel: ObservableObject {
     private func updateCheckinCountAndStatus(restaurant: Restaurant, completion: @escaping (Bool, String, Bool) -> Void) {
         let restaurantRef = db.collection("restaurant").document(restaurant.id!)
         db.runTransaction({ (transaction, errorPointer) -> Any? in
-            let restaurantDocument: DocumentSnapshot
-            do {
-                restaurantDocument = try transaction.getDocument(restaurantRef)
-            } catch let fetchError as NSError {
-                errorPointer?.pointee = fetchError
-                return nil
-            }
 
             var newCheckins = restaurant.currentCheckins + 1
             var newStatus = restaurant.status

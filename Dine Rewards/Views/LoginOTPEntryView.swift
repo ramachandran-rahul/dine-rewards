@@ -106,7 +106,7 @@ struct LoginOTPEntryView: View {
                         )
                         .multilineTextAlignment(.center)
                         .keyboardType(.numberPad)
-                        .onChange(of: otp[index]) { oldvalue, newValue in
+                        .onChange(of: otp[index]) { _, newValue in
                             let filtered = newValue.filter { "0123456789".contains($0) }
                             if filtered.count <= 1 {
                                 otp[index] = filtered

@@ -26,7 +26,7 @@ class RegisteredRestaurantViewModel: ObservableObject {
                           let image = data["image"] as? String,
                           let targetCheckins = data["targetCheckins"] as? Int,
                           let reward = data["reward"] as? String,
-                          let checkinCode = data["checkinCode"] as? String else {
+                          let _ = data["checkinCode"] as? String else {
                         print("Error: Document data missing or malformed")
                         return
                     }
