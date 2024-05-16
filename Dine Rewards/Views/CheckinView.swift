@@ -1,18 +1,15 @@
-//
-//  CheckinView.swift
-//  Dine Rewards
-//
-//  Created by Ba Toan Nguyen on 11/5/24.
-//
-
 import SwiftUI
-import AVFoundation
 
+/// A view for checking in to a restaurant.
 struct CheckinView: View {
+    /// The restaurant to check in to.
     var restaurant: Restaurant
+    /// The phone number of the user.
     var phoneNumber: String
     
+    /// Indicates whether to show the code entry view for check-in.
     @State private var showCodeCheckin = false
+    /// Indicates whether to navigate to the list of restaurants.
     @State private var navigateToList = false
     
     var body: some View {
@@ -40,9 +37,8 @@ struct CheckinView: View {
             .padding(.bottom, 20)
             
             Divider()
-                 .frame(minHeight: 4)
-                 .overlay(Color.white)
-            
+                .frame(minHeight: 4)
+                .overlay(Color.white)
             
             // Milestone rewards
             VStack {
@@ -71,7 +67,6 @@ struct CheckinView: View {
                         .foregroundColor(.white)
                         .padding(.top, 5)
                         .buttonStyle(.borderedProminent)
-                    
                 }
                 .padding(.horizontal)
                 
@@ -96,15 +91,21 @@ struct CheckinView: View {
                     navigateToList = true
                 }
             })
-        }.background(Color.black)
+        }
+        .background(Color.black)
         .navigationDestination(isPresented: $navigateToList) {
             ListRestaurantView(phoneNumber: phoneNumber)
         }
     }
 }
+
+/// A view for displaying progress in a progress bar.
 struct ProgressBarView: View {
+    /// The index of the progress bar.
     var index: Int
+    /// The current progress.
     var current: Int
+    /// The total progress.
     var total: Int
     
     var body: some View {
@@ -142,4 +143,3 @@ struct CheckinView_Previews: PreviewProvider {
         )
     }
 }
-

@@ -1,20 +1,17 @@
-//
-//  ListRewardsView.swift
-//  Dine Rewards
-//
-//  Created by Ba Toan Nguyen on 10/5/24.
-//
-
 import SwiftUI
-import AVFoundation
 
+/// A view for listing restaurants and rewards.
 struct ListRestaurantView: View {
+    /// Indicates whether to show the code entry view for adding a restaurant.
     @State private var showCodeRestaurant = false
+    /// The view model for managing restaurant data.
     @StateObject var viewModel = RestaurantViewModel()
+    /// Indicates whether to show the menu.
     @State var showMenu: Bool = false
+    /// Indicates whether to navigate to the login view.
     @State var navigateToLogin = false
+    /// The phone number of the user.
     var phoneNumber: String
-    
     
     var body: some View {
         NavigationView {
@@ -42,7 +39,6 @@ struct ListRestaurantView: View {
                             }
                         }
                     }
-                    
                     
                     if containsCompleted && containsOther {
                         Divider()
@@ -100,8 +96,6 @@ struct ListRestaurantView: View {
                     .navigationDestination(isPresented: $navigateToLogin) {
                         LoginView()
                     }
-                    
-                    
                 }
             }
             .background(Color.black)
@@ -114,19 +108,24 @@ struct ListRestaurantView: View {
         .navigationBarBackButtonHidden()
     }
     
+    /// Checks if there are completed rewards.
     var containsCompleted: Bool {
         viewModel.restaurants.contains(where: { $0.status == "COMPLETED" })
     }
     
+    /// Checks if there are rewards in progress.
     var containsOther: Bool {
         viewModel.restaurants.contains(where: { $0.status != "COMPLETED" })
     }
     
+    /// Sorts the restaurants based on their status.
     var sortedRestaurants: [Restaurant] {
         viewModel.restaurants.sorted { $0.status == "COMPLETED" && $1.status != "COMPLETED" }
     }
     
+    /// A view for displaying a restaurant in a row.
     struct RestaurantRow: View {
+        /// The restaurant to display.
         var restaurant: Restaurant
         
         var body: some View {

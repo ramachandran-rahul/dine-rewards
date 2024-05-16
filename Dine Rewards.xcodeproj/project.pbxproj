@@ -20,12 +20,10 @@
 		A269CF982BF1CA25009D2C5C /* CodeCheckinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A269CF972BF1CA25009D2C5C /* CodeCheckinView.swift */; };
 		A269CF9A2BF1CAD1009D2C5C /* CodeRestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A269CF992BF1CAD1009D2C5C /* CodeRestaurantView.swift */; };
 		A269CF9C2BF1CC52009D2C5C /* RegisteredRestaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A269CF9B2BF1CC52009D2C5C /* RegisteredRestaurant.swift */; };
-		A269CF9E2BF1CD32009D2C5C /* RegisteredRestaurantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A269CF9D2BF1CD32009D2C5C /* RegisteredRestaurantViewModel.swift */; };
 		A2DB80CD2BF0A36700D0E76F /* UseRewardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DB80C82BF0A36700D0E76F /* UseRewardView.swift */; };
 		A2DB80CE2BF0A36700D0E76F /* CheckinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DB80C92BF0A36700D0E76F /* CheckinView.swift */; };
 		A2DB80D02BF0A36700D0E76F /* ListRestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DB80CB2BF0A36700D0E76F /* ListRestaurantView.swift */; };
 		A2DB80D42BF0A37200D0E76F /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DB80D12BF0A37200D0E76F /* Restaurant.swift */; };
-		A2DB80D52BF0A37200D0E76F /* RestaurantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2DB80D22BF0A37200D0E76F /* RestaurantViewModel.swift */; };
 		A2DB80D72BF0A3E800D0E76F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = A2DB80D62BF0A3E800D0E76F /* FirebaseAnalytics */; };
 		A2DB80D92BF0A3E800D0E76F /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = A2DB80D82BF0A3E800D0E76F /* FirebaseAnalyticsOnDeviceConversion */; };
 		A2DB80DB2BF0A3E800D0E76F /* FirebaseAnalyticsSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A2DB80DA2BF0A3E800D0E76F /* FirebaseAnalyticsSwift */; };
@@ -53,8 +51,10 @@
 		B32DB29A2BEFB06900C0E78D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = B32DB2992BEFB06900C0E78D /* FirebaseAuth */; };
 		B32DB29C2BEFB06900C0E78D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = B32DB29B2BEFB06900C0E78D /* FirebaseStorage */; };
 		B32DB2A02BEFB08D00C0E78D /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = B32DB29F2BEFB08D00C0E78D /* FirebaseDatabase */; };
-		B37AB4D82BEE4883005CE6BC /* auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37AB4D72BEE4883005CE6BC /* auth.swift */; };
 		B3EAC5C52BEE551800D493D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B3EAC5C42BEE551800D493D1 /* GoogleService-Info.plist */; };
+		B3EF594B2BF66327009B45CA /* auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF59482BF66327009B45CA /* auth.swift */; };
+		B3EF594C2BF66327009B45CA /* RestaurantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF59492BF66327009B45CA /* RestaurantViewModel.swift */; };
+		B3EF594D2BF66327009B45CA /* RegisteredRestaurantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3EF594A2BF66327009B45CA /* RegisteredRestaurantViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,16 +90,17 @@
 		A269CF972BF1CA25009D2C5C /* CodeCheckinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeCheckinView.swift; sourceTree = "<group>"; };
 		A269CF992BF1CAD1009D2C5C /* CodeRestaurantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeRestaurantView.swift; sourceTree = "<group>"; };
 		A269CF9B2BF1CC52009D2C5C /* RegisteredRestaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteredRestaurant.swift; sourceTree = "<group>"; };
-		A269CF9D2BF1CD32009D2C5C /* RegisteredRestaurantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisteredRestaurantViewModel.swift; sourceTree = "<group>"; };
 		A2DB80C82BF0A36700D0E76F /* UseRewardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UseRewardView.swift; sourceTree = "<group>"; };
 		A2DB80C92BF0A36700D0E76F /* CheckinView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckinView.swift; sourceTree = "<group>"; };
 		A2DB80CB2BF0A36700D0E76F /* ListRestaurantView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListRestaurantView.swift; sourceTree = "<group>"; };
 		A2DB80D12BF0A37200D0E76F /* Restaurant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
-		A2DB80D22BF0A37200D0E76F /* RestaurantViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantViewModel.swift; sourceTree = "<group>"; };
-		B37AB4D72BEE4883005CE6BC /* auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = auth.swift; sourceTree = "<group>"; };
 		B37AB4DF2BEE4CF9005CE6BC /* Dine Rewards.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Dine Rewards.entitlements"; sourceTree = "<group>"; };
 		B3EAC5C42BEE551800D493D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B3EAC5C62BEE621400D493D1 /* Dine-Rewards-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Dine-Rewards-Info.plist"; sourceTree = SOURCE_ROOT; };
+		B3EF59482BF66327009B45CA /* auth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = auth.swift; sourceTree = "<group>"; };
+		B3EF59492BF66327009B45CA /* RestaurantViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestaurantViewModel.swift; sourceTree = "<group>"; };
+		B3EF594A2BF66327009B45CA /* RegisteredRestaurantViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisteredRestaurantViewModel.swift; sourceTree = "<group>"; };
+		B3EF594E2BF666C9009B45CA /* Auth.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Auth.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,11 +194,11 @@
 		365A67442BEA0E8700ECED78 /* Dine Rewards */ = {
 			isa = PBXGroup;
 			children = (
+				B3EF59472BF66327009B45CA /* API */,
 				A2DB80D32BF0A37200D0E76F /* Models */,
 				B3EAC5C62BEE621400D493D1 /* Dine-Rewards-Info.plist */,
 				B3EAC5C42BEE551800D493D1 /* GoogleService-Info.plist */,
 				B37AB4DF2BEE4CF9005CE6BC /* Dine Rewards.entitlements */,
-				B37AB4D62BEE486C005CE6BC /* API */,
 				3644B6472BECE6B50000044A /* Views */,
 				365A67452BEA0E8700ECED78 /* Dine_RewardsApp.swift */,
 				365A67492BEA0E8800ECED78 /* Assets.xcassets */,
@@ -235,17 +236,18 @@
 			isa = PBXGroup;
 			children = (
 				A2DB80D12BF0A37200D0E76F /* Restaurant.swift */,
-				A2DB80D22BF0A37200D0E76F /* RestaurantViewModel.swift */,
 				A269CF9B2BF1CC52009D2C5C /* RegisteredRestaurant.swift */,
-				A269CF9D2BF1CD32009D2C5C /* RegisteredRestaurantViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		B37AB4D62BEE486C005CE6BC /* API */ = {
+		B3EF59472BF66327009B45CA /* API */ = {
 			isa = PBXGroup;
 			children = (
-				B37AB4D72BEE4883005CE6BC /* auth.swift */,
+				B3EF59482BF66327009B45CA /* auth.swift */,
+				B3EF59492BF66327009B45CA /* RestaurantViewModel.swift */,
+				B3EF594A2BF66327009B45CA /* RegisteredRestaurantViewModel.swift */,
+				B3EF594E2BF666C9009B45CA /* Auth.md */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -416,16 +418,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				A2DB80D42BF0A37200D0E76F /* Restaurant.swift in Sources */,
-				A2DB80D52BF0A37200D0E76F /* RestaurantViewModel.swift in Sources */,
+				B3EF594B2BF66327009B45CA /* auth.swift in Sources */,
 				36D374292BEE05370073F19D /* LoginView.swift in Sources */,
 				365A67482BEA0E8700ECED78 /* ContentView.swift in Sources */,
 				365A67462BEA0E8700ECED78 /* Dine_RewardsApp.swift in Sources */,
 				A269CF982BF1CA25009D2C5C /* CodeCheckinView.swift in Sources */,
-				B37AB4D82BEE4883005CE6BC /* auth.swift in Sources */,
 				A2DB80CE2BF0A36700D0E76F /* CheckinView.swift in Sources */,
-				A269CF9E2BF1CD32009D2C5C /* RegisteredRestaurantViewModel.swift in Sources */,
+				B3EF594C2BF66327009B45CA /* RestaurantViewModel.swift in Sources */,
 				A269CF9A2BF1CAD1009D2C5C /* CodeRestaurantView.swift in Sources */,
 				A269CF9C2BF1CC52009D2C5C /* RegisteredRestaurant.swift in Sources */,
+				B3EF594D2BF66327009B45CA /* RegisteredRestaurantViewModel.swift in Sources */,
 				A2DB80CD2BF0A36700D0E76F /* UseRewardView.swift in Sources */,
 				36D3742B2BEF3D1F0073F19D /* LoginOTPEntryView.swift in Sources */,
 				A2DB80D02BF0A36700D0E76F /* ListRestaurantView.swift in Sources */,
