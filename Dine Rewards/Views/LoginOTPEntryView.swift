@@ -175,7 +175,6 @@ struct LoginOTPEntryView: View {
             Spacer()
         }
         .background(Color.black)
-        .navigationBarHidden(true)
         .onAppear{
             timer = startTimer()
         }
