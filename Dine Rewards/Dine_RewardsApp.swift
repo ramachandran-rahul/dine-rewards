@@ -45,6 +45,24 @@ struct Dine_RewardsApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     @StateObject var viewModel = RestaurantViewModel()
     
+    init() {
+        // Customize the appearance of the navigation bar
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor.black
+        
+        // Customize the back button appearance
+        appearance.setBackIndicatorImage(
+            UIImage(systemName: "arrowshape.turn.up.left.circle.fill")?.withTintColor(.red, renderingMode: .alwaysOriginal),
+            transitionMaskImage: UIImage(systemName: "arrowshape.turn.up.left.circle.fill")?.withTintColor(.red, renderingMode: .alwaysOriginal)
+        )
+        appearance.backButtonAppearance.normal.titleTextAttributes = [.foregroundColor: UIColor.red]
+        
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        UINavigationBar.appearance().compactAppearance = appearance
+    }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()

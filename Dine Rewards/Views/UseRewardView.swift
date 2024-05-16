@@ -35,6 +35,7 @@ struct UseRewardView: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 200, height: 200)
+                    .cornerRadius(12)
                     .padding(.bottom, 20)
                 
                 Button("Use Reward") {
@@ -46,9 +47,11 @@ struct UseRewardView: View {
                 .background(Color.red)
                 .foregroundColor(.white)
                 .cornerRadius(10)
+                .padding(.bottom, 100)
             }
             Spacer()
         }
+        .frame(maxWidth: .infinity)
         .background(Color.black)
         .navigationDestination(isPresented: $showRestaurantView) {
             ListRestaurantView(phoneNumber: phoneNumber)

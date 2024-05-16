@@ -69,7 +69,7 @@ struct ListRestaurantView: View {
                     viewModel.fetchData(phone: phoneNumber)
                 }
                 .listStyle(PlainListStyle())
-                HStack {
+                VStack {
                     Button(action: {
                         self.showCodeRestaurant = true
                     }) {
@@ -80,23 +80,23 @@ struct ListRestaurantView: View {
                             .cornerRadius(10)
                     }
                     .padding(.bottom)
-                    .padding(.leading)
-                    
-                    Spacer()
                     
                     Button(action: {
                         AuthManager.shared.signOut { success in
                             navigateToLogin = success
                         }
                     }) {
-                        Text("Sign Out")
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(Color.red)
-                            .cornerRadius(10)
+                        HStack {
+                            Image("logout")
+                                .resizable()
+                                .frame(width: 16, height: 16)
+                            Text("Sign Out")
+                                .font(.callout)
+                                .foregroundStyle(Color.red)
+                                .underline()
+                        }
                     }
                     .padding(.bottom)
-                    .padding(.trailing)
                     .navigationDestination(isPresented: $navigateToLogin) {
                         LoginView()
                     }

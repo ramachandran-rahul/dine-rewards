@@ -16,7 +16,7 @@ struct CheckinView: View {
     @State private var navigateToList = false
     
     var body: some View {
-        VStack {
+        VStack (spacing: 0) {
             // Header
             VStack {
                 AsyncImage(url: URL(string: restaurant.image)) { image in
@@ -26,6 +26,10 @@ struct CheckinView: View {
                 }
                 .frame(width: 150, height: 150)
                 .cornerRadius(75)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 75)
+                        .stroke(Color.white, lineWidth: 2)
+                )
                 .padding(.bottom)
                 Text(restaurant.title)
                     .font(.title)
@@ -34,8 +38,6 @@ struct CheckinView: View {
             }
             .frame(maxWidth: .infinity)
             .padding(.bottom, 20)
-            .padding(.top, 20)
-            .background(Color.black.opacity(0.8))
             
             Divider()
                  .frame(minHeight: 4)
