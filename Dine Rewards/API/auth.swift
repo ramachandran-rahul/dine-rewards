@@ -26,14 +26,7 @@ class AuthManager: ObservableObject {
     
     private var verificationId: String?
     
-    public func startAuth(phoneNumber: String, resendOtp: Bool = false, completion: @escaping (Bool) -> Void) {
-        if(!resendOtp){
-            if let savedValue = UserDefaults.standard.string(forKey: verificationIdKey) {
-                self.verificationId = savedValue
-                completion(true)
-                return
-            }
-        }
+    public func startAuth(phoneNumber: String, completion: @escaping (Bool) -> Void) {
     
         PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationId, error in
             guard let verficationId = verificationId, error == nil else {
@@ -47,6 +40,9 @@ class AuthManager: ObservableObject {
     }
     
     public func verifyCode(smsCode: String, completion: @escaping (Bool) -> Void) {
+        if(self.verificationId == nil) {
+            self.verificationId = UserDefaults.standard.string(forKey: verificationIdKey)
+        }
         guard let verificationId = verificationId else {
             completion(false)
             return

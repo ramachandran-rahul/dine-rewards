@@ -111,6 +111,7 @@ struct ListRestaurantView: View {
                 showCodeRestaurant = false
             })
         }
+        .navigationBarBackButtonHidden()
     }
     
     var containsCompleted: Bool {

@@ -127,7 +127,7 @@ struct LoginOTPEntryView: View {
             //resend OTP Button
             Button(action: {
                 // Action for the button
-                AuthManager.shared.startAuth(phoneNumber: phoneNumber, resendOtp: true){ success in
+                AuthManager.shared.startAuth(phoneNumber: phoneNumber) { success in
                     guard success else {return}
                     DispatchQueue.main.async {
 
