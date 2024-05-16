@@ -9,12 +9,20 @@ import Foundation
 import SwiftUI
 import FirebaseAuth
 
-class Auth {
+class AuthManager: ObservableObject {
     //single shared instance
     private var verificationIdKey: String = "verficationId"
-    static let shared = Auth()
-    
+    static let shared = AuthManager()
+    @Published var isLoggedIn: Bool = false
+    @Published var user: User?
     private let auth = FirebaseAuth.Auth.auth()
+    
+    init() {
+        auth.addStateDidChangeListener { auth, user in
+            self.isLoggedIn = user != nil
+            self.user = user
+        }
+    }
     
     private var verificationId: String?
     
@@ -51,6 +59,7 @@ class Auth {
                 return
             }
             completion(true)
+            self.user = result?.user
         }
     }
 }

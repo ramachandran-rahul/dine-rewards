@@ -127,7 +127,7 @@ struct LoginOTPEntryView: View {
             //resend OTP Button
             Button(action: {
                 // Action for the button
-                Auth.shared.startAuth(phoneNumber: phoneNumber, resendOtp: true){ success in
+                AuthManager.shared.startAuth(phoneNumber: phoneNumber, resendOtp: true){ success in
                     guard success else {return}
                     DispatchQueue.main.async {
 
@@ -154,7 +154,7 @@ struct LoginOTPEntryView: View {
             // Continue button
             Button(action: {
                 // Action for the button
-                Auth.shared.verifyCode(smsCode: otp.joined()){ success in
+                AuthManager.shared.verifyCode(smsCode: otp.joined()){ success in
                     guard success else {return}
                     DispatchQueue.main.async {
                         shouldNavigate.toggle()

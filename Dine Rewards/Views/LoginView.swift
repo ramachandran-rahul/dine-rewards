@@ -87,7 +87,7 @@ struct LoginView: View {
             Button(action: {
                 focusedField = false
                 // Action for the button
-                Auth.shared.startAuth(phoneNumber: phoneNumber) { success in
+                AuthManager.shared.startAuth(phoneNumber: phoneNumber) { success in
                     DispatchQueue.main.async {
                         if success {
                             shouldNavigate.toggle()
