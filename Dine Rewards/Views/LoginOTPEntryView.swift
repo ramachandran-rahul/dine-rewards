@@ -15,6 +15,7 @@ struct LoginOTPEntryView: View {
     @FocusState private var focusedField: Int?
     @State private var canResendOtp: Bool = false
     @State private var remainingTime: Int = 60
+    @State private var timer: Timer?
     
     let otpFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
@@ -105,7 +106,7 @@ struct LoginOTPEntryView: View {
                         )
                         .multilineTextAlignment(.center)
                         .keyboardType(.numberPad)
-                        .onChange(of: otp[index]) { oldvalue, newValue in
+                        .onChange(of: otp[index]) { _, newValue in
                             let filtered = newValue.filter { "0123456789".contains($0) }
                             if filtered.count <= 1 {
                                 otp[index] = filtered
@@ -126,12 +127,12 @@ struct LoginOTPEntryView: View {
             //resend OTP Button
             Button(action: {
                 // Action for the button
-                Auth.shared.startAuth(phoneNumber: phoneNumber, resendOtp: true){ success in
+                AuthManager.shared.startAuth(phoneNumber: phoneNumber) { success in
                     guard success else {return}
                     DispatchQueue.main.async {
 
                         canResendOtp = false
-                        startTimer()
+                        timer = startTimer()
                         //debug
                         print("succesfully resent OTP")
                         
@@ -153,7 +154,7 @@ struct LoginOTPEntryView: View {
             // Continue button
             Button(action: {
                 // Action for the button
-                Auth.shared.verifyCode(smsCode: otp.joined()){ success in
+                AuthManager.shared.verifyCode(smsCode: otp.joined()){ success in
                     guard success else {return}
                     DispatchQueue.main.async {
                         shouldNavigate.toggle()
@@ -180,13 +181,16 @@ struct LoginOTPEntryView: View {
         .background(Color.black)
         .navigationBarHidden(true)
         .onAppear{
-            startTimer()
+            timer = startTimer()
+        }
+        .onDisappear {
+            timer?.invalidate()
         }
     }
     
-    func startTimer() {
+    func startTimer() -> Timer? {
         remainingTime = 60
-        Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
+       return Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
             // Enable the button after 1 minute
             if remainingTime > 0 {
                 remainingTime -= 1

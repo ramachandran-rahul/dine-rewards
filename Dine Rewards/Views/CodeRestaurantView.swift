@@ -42,7 +42,7 @@ struct CodeRestaurantView: View {
                         )
                         .multilineTextAlignment(.center)
                         .keyboardType(.numberPad)
-                        .onChange(of: code[index]) { newValue in
+                        .onChange(of: code[index]) { _, newValue in
                             let filtered = newValue.filter { "0123456789".contains($0) }
                             if filtered.count <= 1 {
                                 code[index] = filtered

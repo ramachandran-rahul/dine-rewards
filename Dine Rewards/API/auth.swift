@@ -9,23 +9,24 @@ import Foundation
 import SwiftUI
 import FirebaseAuth
 
-class Auth {
+class AuthManager: ObservableObject {
     //single shared instance
     private var verificationIdKey: String = "verficationId"
-    static let shared = Auth()
-    
+    static let shared = AuthManager()
+    @Published var isLoggedIn: Bool = false
+    @Published var user: User?
     private let auth = FirebaseAuth.Auth.auth()
+    
+    init() {
+        auth.addStateDidChangeListener { auth, user in
+            self.isLoggedIn = user != nil
+            self.user = user
+        }
+    }
     
     private var verificationId: String?
     
-    public func startAuth(phoneNumber: String, resendOtp: Bool = false, completion: @escaping (Bool) -> Void) {
-        if(!resendOtp){
-            if let savedValue = UserDefaults.standard.string(forKey: verificationIdKey) {
-                self.verificationId = savedValue
-                completion(true)
-                return
-            }
-        }
+    public func startAuth(phoneNumber: String, completion: @escaping (Bool) -> Void) {
     
         PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { verificationId, error in
             guard let verficationId = verificationId, error == nil else {
@@ -39,6 +40,9 @@ class Auth {
     }
     
     public func verifyCode(smsCode: String, completion: @escaping (Bool) -> Void) {
+        if(self.verificationId == nil) {
+            self.verificationId = UserDefaults.standard.string(forKey: verificationIdKey)
+        }
         guard let verificationId = verificationId else {
             completion(false)
             return
@@ -51,6 +55,17 @@ class Auth {
                 return
             }
             completion(true)
+            self.user = result?.user
         }
     }
+    
+    public func signOut(completion: @escaping (Bool) -> Void) {
+            do {
+                try Auth.auth().signOut()
+                self.user = nil
+                completion(true)
+            } catch let signOutError as NSError {
+                print(signOutError.localizedDescription)
+            }
+        }
 }

@@ -87,7 +87,7 @@ struct LoginView: View {
             Button(action: {
                 focusedField = false
                 // Action for the button
-                Auth.shared.startAuth(phoneNumber: phoneNumber) { success in
+                AuthManager.shared.startAuth(phoneNumber: phoneNumber) { success in
                     DispatchQueue.main.async {
                         if success {
                             shouldNavigate.toggle()
@@ -109,13 +109,9 @@ struct LoginView: View {
             .disabled(phoneNumber.count < 9)
             .padding(.horizontal)
             .padding(.top, 20)
-            .background(
-                NavigationLink(destination: LoginOTPEntryView(phoneNumber: $phoneNumber), isActive: $shouldNavigate) {
-                    EmptyView()
-                }
-                    .isDetailLink(false) // Prevents opening a new detail view on iPad
-            )
-            
+            .navigationDestination(isPresented: $shouldNavigate, destination: {
+                LoginOTPEntryView(phoneNumber: $phoneNumber)
+            })
             Spacer()
         }
         .background(Color.black)
