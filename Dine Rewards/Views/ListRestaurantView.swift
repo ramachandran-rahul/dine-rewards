@@ -11,6 +11,8 @@ import AVFoundation
 struct ListRestaurantView: View {
     @State private var showCodeRestaurant = false
     @StateObject var viewModel = RestaurantViewModel()
+    @State var showMenu: Bool = false
+    @State var navigateToLogin = false
     var phoneNumber: String
     
     
@@ -24,13 +26,13 @@ struct ListRestaurantView: View {
                     .background(Color.red)
                     .frame(maxWidth: .infinity, alignment: .center)
                 
-               ScrollView {
+                ScrollView {
                     Text("Claim your Rewards")
-                       .font(.title3)
-                       .bold()
-                       .foregroundStyle(Color.white)
-                       .frame(maxWidth: .infinity, alignment: .leading)
-                   Divider()
+                        .font(.title3)
+                        .bold()
+                        .foregroundStyle(Color.white)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Divider()
                         .frame(minHeight: 2)
                         .overlay(Color.white)
                     ForEach(sortedRestaurants) { restaurant in
@@ -46,14 +48,14 @@ struct ListRestaurantView: View {
                         Divider()
                     }
                     
-                   Text("Check in to unlock these Rewards")
-                      .font(.title3)
-                      .bold()
-                      .foregroundStyle(Color.white)
-                      .frame(maxWidth: .infinity, alignment: .leading)
-                  Divider()
-                       .frame(minHeight: 2)
-                       .overlay(Color.white)
+                    Text("Check in to unlock these Rewards")
+                        .font(.title3)
+                        .bold()
+                        .foregroundStyle(Color.white)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    Divider()
+                        .frame(minHeight: 2)
+                        .overlay(Color.white)
                     ForEach(sortedRestaurants) { restaurant in
                         if restaurant.status != "COMPLETED" {
                             NavigationLink(destination: CheckinView(restaurant: restaurant, phoneNumber: phoneNumber)) {
@@ -62,21 +64,45 @@ struct ListRestaurantView: View {
                         }
                     }
                 }
-               .padding()
+                .padding()
                 .onAppear() {
                     viewModel.fetchData(phone: phoneNumber)
                 }
                 .listStyle(PlainListStyle())
-                Button(action: {
-                    self.showCodeRestaurant = true
-                }) {
-                    Text("Add a Restaurant")
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.red)
-                        .cornerRadius(10)
+                HStack {
+                    Button(action: {
+                        self.showCodeRestaurant = true
+                    }) {
+                        Text("Add a Restaurant")
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.red)
+                            .cornerRadius(10)
+                    }
+                    .padding(.bottom)
+                    .padding(.leading)
+                    
+                    Spacer()
+                    
+                    Button(action: {
+                        AuthManager.shared.signOut { success in
+                            navigateToLogin = success
+                        }
+                    }) {
+                        Text("Sign Out")
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.red)
+                            .cornerRadius(10)
+                    }
+                    .padding(.bottom)
+                    .padding(.trailing)
+                    .navigationDestination(isPresented: $navigateToLogin) {
+                        LoginView()
+                    }
+                    
+                    
                 }
-                .padding(.bottom)
             }
             .background(Color.black)
         }

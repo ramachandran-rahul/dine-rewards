@@ -62,4 +62,14 @@ class AuthManager: ObservableObject {
             self.user = result?.user
         }
     }
+    
+    public func signOut(completion: @escaping (Bool) -> Void) {
+            do {
+                try Auth.auth().signOut()
+                self.user = nil
+                completion(true)
+            } catch let signOutError as NSError {
+                print(signOutError.localizedDescription)
+            }
+        }
 }
