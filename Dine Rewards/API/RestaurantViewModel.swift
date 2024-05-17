@@ -117,7 +117,7 @@ class RestaurantViewModel: ObservableObject {
     private func updateCheckinCountAndStatus(restaurant: Restaurant, completion: @escaping (Bool, String, Bool) -> Void) {
         let restaurantRef = db.collection("restaurant").document(restaurant.id!)
         db.runTransaction({ (transaction, errorPointer) -> Any? in
-            var newCheckins = restaurant.currentCheckins + 1
+            let newCheckins = restaurant.currentCheckins + 1
             var newStatus = restaurant.status
             if newCheckins >= restaurant.targetCheckins {
                 newStatus = "COMPLETED"

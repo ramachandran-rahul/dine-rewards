@@ -26,7 +26,7 @@ struct UseRewardView: View {
                 .bold()
                 .foregroundStyle(Color.white)
             VStack(spacing: 20) {
-                Text("Please show the restaurant staff the QR code below to redeem your reward and then click on the Use Reward button.")
+                Text("Please show the restaurant staff the QR code below to redeem your reward and then click on the Mark as Redeemed button.")
                     .padding()
                     .multilineTextAlignment(.center)
                     .foregroundStyle(Color.white)
@@ -37,7 +37,7 @@ struct UseRewardView: View {
                     .cornerRadius(12)
                     .padding(.bottom, 20)
                 
-                Button("Use Reward") {
+                Button("Mark as Redeemed") {
                     viewModel.deleteData(restaurantId: restaurant.id!, phone: phoneNumber, completion: {
                         showRestaurantView = true
                     })

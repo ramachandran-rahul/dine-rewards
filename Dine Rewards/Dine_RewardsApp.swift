@@ -64,6 +64,9 @@ struct Dine_RewardsApp: App {
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
         UINavigationBar.appearance().compactAppearance = appearance
+        
+        // Adjust the navigation bar layout margins
+        UINavigationBar.appearance().layoutMargins = UIEdgeInsets(top: 0, left: 0, bottom: -10, right: 0)
     }
     
     var body: some Scene {
