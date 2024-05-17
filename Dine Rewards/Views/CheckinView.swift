@@ -34,6 +34,7 @@ struct CheckinView: View {
                     .foregroundColor(.white)
             }
             .frame(maxWidth: .infinity)
+            .padding(.top, 10)
             .padding(.bottom, 20)
             
             Divider()

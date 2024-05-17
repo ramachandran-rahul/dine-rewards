@@ -32,7 +32,7 @@ struct ContentView: View {
                          SVProgressHUD.setDefaultStyle(.custom)
                          SVProgressHUD.setBackgroundColor(.clear)
                          SVProgressHUD.setForegroundColor(.white)
-                         SVProgressHUD.setRingThickness(7.0)
+                         SVProgressHUD.setRingThickness(5.0)
                          SVProgressHUD.setOffsetFromCenter(UIOffset(horizontal: 0, vertical: 125))
                          SVProgressHUD.show()
 
