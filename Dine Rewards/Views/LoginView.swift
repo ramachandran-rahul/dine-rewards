@@ -9,7 +9,7 @@ struct LoginView: View {
     /// Indicates whether to navigate to the next view.
     @State private var shouldNavigate: Bool = false
     /// Indicates whether to show an error.
-    @State private var showError: Bool = false
+    @State private var showInvalidNumberAlert: Bool = false
     /// The focused state of the field.
     @FocusState private var focusedField: Bool
     
@@ -75,12 +75,6 @@ struct LoginView: View {
                 .padding(.horizontal)
                 .padding(.top, 10)
             
-            if showError {
-                Text("Invalid phone number")
-                    .foregroundColor(.red)
-                    .padding(.top, 10)
-            }
-            
             // Continue button
             Button(action: {
                 focusedField = false
@@ -90,7 +84,7 @@ struct LoginView: View {
                             shouldNavigate.toggle()
                             print("API call successful")
                         } else {
-                            showError = true
+                            showInvalidNumberAlert = true
                         }
                     }
                 }
@@ -117,6 +111,13 @@ struct LoginView: View {
         }
         .onDisappear {
             focusedField = false
+        }
+        .alert(isPresented: $showInvalidNumberAlert) {
+            Alert(
+                title: Text("Invalid Phone Number"),
+                message: Text("The phone number you entered is invalid. Please try again."),
+                dismissButton: .default(Text("OK"))
+            )
         }
     }
 }

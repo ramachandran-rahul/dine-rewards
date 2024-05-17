@@ -17,6 +17,8 @@ struct LoginOTPEntryView: View {
     @State private var remainingTime: Int = 60
     /// The timer instance.
     @State private var timer: Timer?
+    /// Indicates whether to show the alert.
+    @State private var showOTPErrorAlert: Bool = false
     
     /// The number formatter for OTP.
     let otpFormatter: NumberFormatter = {
@@ -101,6 +103,7 @@ struct LoginOTPEntryView: View {
                         .textFieldStyle(PlainTextFieldStyle())
                         .font(.title)
                         .background(Color.white)
+                        .foregroundStyle(Color.black)
                         .cornerRadius(5)
                         .overlay(
                             RoundedRectangle(cornerRadius: 5)
@@ -138,9 +141,10 @@ struct LoginOTPEntryView: View {
                 }
             }) {
                 Text(formattedResendOtp())
-                    .foregroundColor(.red)
+                    .foregroundColor(remainingTime == 0 ? .red : .gray)
                     .underline()
-                    .padding()
+                    .padding(.horizontal)
+                    .padding(.top, 5)
                     .background(.clear)
                     .cornerRadius(10)
             }
@@ -150,13 +154,19 @@ struct LoginOTPEntryView: View {
             
             // Continue button
             Button(action: {
-                AuthManager.shared.verifyCode(smsCode: otp.joined()){ success in
-                    guard success else {return}
-                    DispatchQueue.main.async {
-                        shouldNavigate.toggle()
-                        print("Successfully verified OTP")
+                AuthManager.shared.verifyCode(smsCode: otp.joined()) { success in
+                        DispatchQueue.main.async {
+                            if success {
+                                shouldNavigate.toggle()
+                                print("Successfully verified OTP")
+                            } else {
+                                showOTPErrorAlert = true
+                                otp = Array(repeating: "", count: 6)
+                                focusedField = 0
+                                print("Failed to verify OTP")
+                            }
+                        }
                     }
-                }
             }) {
                 Text("Verify & Continue")
                     .foregroundColor(.white)
@@ -175,6 +185,13 @@ struct LoginOTPEntryView: View {
             Spacer()
         }
         .background(Color.black)
+        .alert(isPresented: $showOTPErrorAlert) {
+            Alert(
+                title: Text("Verification Failed"),
+                message: Text("The OTP you entered is incorrect. Please try again."),
+                dismissButton: .default(Text("OK"))
+            )
+        }
         .onAppear{
             timer = startTimer()
         }
