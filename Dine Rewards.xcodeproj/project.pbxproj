@@ -17,6 +17,7 @@
 		36D374292BEE05370073F19D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D374282BEE05370073F19D /* LoginView.swift */; };
 		36D3742B2BEF3D1F0073F19D /* LoginOTPEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D3742A2BEF3D1F0073F19D /* LoginOTPEntryView.swift */; };
 		36D3742E2BEF41410073F19D /* iPhoneNumberField in Frameworks */ = {isa = PBXBuildFile; productRef = 36D3742D2BEF41410073F19D /* iPhoneNumberField */; };
+		36D374312BF747430073F19D /* SVProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 36D374302BF747430073F19D /* SVProgressHUD */; };
 		A269CF982BF1CA25009D2C5C /* CodeCheckinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A269CF972BF1CA25009D2C5C /* CodeCheckinView.swift */; };
 		A269CF9A2BF1CAD1009D2C5C /* CodeRestaurantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A269CF992BF1CAD1009D2C5C /* CodeRestaurantView.swift */; };
 		A269CF9C2BF1CC52009D2C5C /* RegisteredRestaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = A269CF9B2BF1CC52009D2C5C /* RegisteredRestaurant.swift */; };
@@ -119,6 +120,7 @@
 				A2DB80E92BF0A3E800D0E76F /* FirebaseDynamicLinks in Frameworks */,
 				A2DB80D72BF0A3E800D0E76F /* FirebaseAnalytics in Frameworks */,
 				A2DB80FB2BF0A3E800D0E76F /* FirebaseMLModelDownloader in Frameworks */,
+				36D374312BF747430073F19D /* SVProgressHUD in Frameworks */,
 				A2DB80E72BF0A3E800D0E76F /* FirebaseDatabaseSwift in Frameworks */,
 				A2DB80EB2BF0A3E800D0E76F /* FirebaseFirestore in Frameworks */,
 				A2DB80F92BF0A3E800D0E76F /* FirebaseInstallations in Frameworks */,
@@ -297,6 +299,7 @@
 				A2DB81002BF0A3E800D0E76F /* FirebaseRemoteConfig */,
 				A2DB81022BF0A3E800D0E76F /* FirebaseRemoteConfigSwift */,
 				A2DB81042BF0A3E800D0E76F /* FirebaseStorageCombine-Community */,
+				36D374302BF747430073F19D /* SVProgressHUD */,
 			);
 			productName = "Dine Rewards";
 			productReference = 365A67422BEA0E8700ECED78 /* Dine Rewards.app */;
@@ -373,6 +376,7 @@
 			packageReferences = (
 				36D3742C2BEF3F560073F19D /* XCRemoteSwiftPackageReference "iPhoneNumberField" */,
 				B32DB2982BEFB06900C0E78D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				36D3742F2BF747430073F19D /* XCRemoteSwiftPackageReference "SVProgressHUD" */,
 			);
 			productRefGroup = 365A67432BEA0E8700ECED78 /* Products */;
 			projectDirPath = "";
@@ -776,6 +780,14 @@
 				minimumVersion = 0.10.1;
 			};
 		};
+		36D3742F2BF747430073F19D /* XCRemoteSwiftPackageReference "SVProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SVProgressHUD/SVProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.1;
+			};
+		};
 		B32DB2982BEFB06900C0E78D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -791,6 +803,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 36D3742C2BEF3F560073F19D /* XCRemoteSwiftPackageReference "iPhoneNumberField" */;
 			productName = iPhoneNumberField;
+		};
+		36D374302BF747430073F19D /* SVProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 36D3742F2BF747430073F19D /* XCRemoteSwiftPackageReference "SVProgressHUD" */;
+			productName = SVProgressHUD;
 		};
 		A2DB80D62BF0A3E800D0E76F /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;
