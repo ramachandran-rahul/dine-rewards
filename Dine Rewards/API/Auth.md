@@ -28,7 +28,8 @@ AuthManager.shared.startAuth(phoneNumber: "+1234567890") { success in
     } else {
         print("Failed to send OTP.")
     }
-}```
+}
+```
 
 ### Verify OTP
 
@@ -41,7 +42,8 @@ AuthManager.shared.verifyCode(smsCode: "123456") { success in
     } else {
         print("Failed to sign in.")
     }
-}```
+}
+```
 
 ### Sign Out
 
@@ -54,7 +56,8 @@ AuthManager.shared.signOut { success in
     } else {
         print("Failed to sign out.")
     }
-}```
+}
+```
 
 ### Observing Login Status
 
@@ -69,7 +72,8 @@ var body: some View {
     } else {
         Text("User is not logged in")
     }
-}```
+}
+```
 
 ### Dependencies
     
