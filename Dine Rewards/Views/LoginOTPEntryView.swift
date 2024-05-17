@@ -1,22 +1,24 @@
-//
-//  LoginOTPEntryView.swift
-//  Dine Rewards
-//
-//  Created by Rahul Ramachandran on 11/05/24.
-//
-
 import SwiftUI
 import iPhoneNumberField
 
+/// A view for entering the OTP to verify the phone number for login.
 struct LoginOTPEntryView: View {
+    /// Binding to the phone number entered by the user.
     @Binding var phoneNumber: String
+    /// The array to store the entered OTP digits.
     @State private var otp: [String] = Array(repeating: "", count: 6)
+    /// Indicates whether to navigate to the next view.
     @State private var shouldNavigate: Bool = false
+    /// The focused field index.
     @FocusState private var focusedField: Int?
+    /// Indicates whether the OTP can be resent.
     @State private var canResendOtp: Bool = false
+    /// The remaining time until the OTP can be resent.
     @State private var remainingTime: Int = 60
+    /// The timer instance.
     @State private var timer: Timer?
     
+    /// The number formatter for OTP.
     let otpFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.minimum = .init(integerLiteral: 1)
@@ -124,19 +126,14 @@ struct LoginOTPEntryView: View {
             .padding(.horizontal)
             .padding(.top, 20)
             
-            //resend OTP Button
+            // Resend OTP Button
             Button(action: {
-                // Action for the button
                 AuthManager.shared.startAuth(phoneNumber: phoneNumber) { success in
                     guard success else {return}
                     DispatchQueue.main.async {
-
                         canResendOtp = false
                         timer = startTimer()
-                        //debug
-                        print("succesfully resent OTP")
-                        
-                        // TODO: handle what happens once otp verification is successful
+                        print("Successfully resent OTP")
                     }
                 }
             }) {
@@ -153,12 +150,11 @@ struct LoginOTPEntryView: View {
             
             // Continue button
             Button(action: {
-                // Action for the button
                 AuthManager.shared.verifyCode(smsCode: otp.joined()){ success in
                     guard success else {return}
                     DispatchQueue.main.async {
                         shouldNavigate.toggle()
-                        print("succesfully verified OTP")
+                        print("Successfully verified OTP")
                     }
                 }
             }) {
@@ -179,7 +175,6 @@ struct LoginOTPEntryView: View {
             Spacer()
         }
         .background(Color.black)
-        .navigationBarHidden(true)
         .onAppear{
             timer = startTimer()
         }
@@ -188,20 +183,22 @@ struct LoginOTPEntryView: View {
         }
     }
     
+    /// Starts the timer for OTP resend countdown.
+    /// - Returns: The timer instance.
     func startTimer() -> Timer? {
         remainingTime = 60
        return Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { timer in
-            // Enable the button after 1 minute
             if remainingTime > 0 {
                 remainingTime -= 1
             } else {
-                // Enable the button after 1 minute
                 canResendOtp = true
-                timer.invalidate() // Stop the timer when enabled
+                timer.invalidate()
             }
         }
     }
     
+    /// Formats the resend OTP text.
+    /// - Returns: The formatted text for resending OTP.
     func formattedResendOtp() -> String {
         return remainingTime == 0 ? "Resend OTP" : "Resend OTP in \(remainingTime)"
     }

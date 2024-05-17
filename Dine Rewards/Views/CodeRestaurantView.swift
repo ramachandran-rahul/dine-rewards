@@ -7,13 +7,21 @@
 
 import SwiftUI
 
+/// A view for entering the restaurant code to register rewards.
 struct CodeRestaurantView: View {
+    /// The phone number of the user.
     var phoneNumber: String
+    /// A closure to call upon completion.
     var onCompletion: () -> Void
+    /// The array to store the entered code digits.
     @State private var code: [String] = Array(repeating: "", count: 4)
+    /// Indicates whether to show an error alert.
     @State private var showingError = false
+    /// The error message to display.
     @State private var errorMessage = ""
+    /// The view model for registered restaurants.
     @ObservedObject var viewModel = RegisteredRestaurantViewModel()
+    /// The focused field index.
     @FocusState private var focusedField: Int?
     
     var body: some View {
@@ -24,7 +32,7 @@ struct CodeRestaurantView: View {
                 .bold()
                 .padding(.bottom, 10)
                 .foregroundStyle(Color.white)
-            Text("Please enter the restaurant code near the entrace or ask your lovely waiter for today!")
+            Text("Please enter the restaurant code near the entrance or ask your lovely waiter for today!")
                 .foregroundStyle(Color.white)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal)
