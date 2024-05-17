@@ -37,6 +37,7 @@ Usage
 To use Dine Rewards, simply launch the app and follow the on-screen instructions to add your existing loyalty cards. Once added, you can view your points, track rewards, and check in to your favourite restaurants. The codes required in the application are:
 
 **Restaurant Codes**: 1111, 2222, 3333, 4444, and 5555
+
 **Check-In Codes**: 1110, 2220, 3330, 4440, and 5550
 
 Dependencies
